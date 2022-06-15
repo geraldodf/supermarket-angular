@@ -8,13 +8,17 @@ import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
+import { OfertasEspeciaisComponent } from './templates/ofertas-especiais/ofertas-especiais.component';
+import { ProdutosComponent } from './templates/produtos/produtos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    OfertasEspeciaisComponent,
+    ProdutosComponent
   ],
   imports: [
     BrowserModule,
