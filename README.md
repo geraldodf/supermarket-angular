@@ -1,6 +1,6 @@
 ## Supermercado Web
 
-Esse projeto é um supermercado online, o qual ira haver possibilidades de fazer compras como em um supermercado tradicional.
+Esse projeto é um supermercado online, o qual ira haver possibilidades de fazer compras como em um supermercado tradicional. Esse projeto acessa uma api em Java com Spring que eu mesmo criei.
 
 Também tenho esse projeto como portfolio do meu conhecimento em Angular e bootstrap.
 
