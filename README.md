@@ -1,7 +1,9 @@
 ## Supermercado Web
 
-Esse projeto tem como intenção ser um supermercado online, o qual eu tenho como portfolio do meu conhecimento em angular e também bootstrap.
+Esse projeto é um supermercado online, o qual ira haver possibilidades de fazer compras como em um supermercado tradicional.
 
-api consumida nesse projeto também é um projeto criado por mim, com spring. 
+Também tenho esse projeto como portfolio do meu conhecimento em Angular e bootstrap.
 
-Link do back-end -> https://github.com/geraldodf/supermercado-spring-api
+### Esse projeto ainda está sendo aprimorado e ainda não está terminado!
+
+Link api back-end: https://github.com/geraldodf/supermercado-spring-api
