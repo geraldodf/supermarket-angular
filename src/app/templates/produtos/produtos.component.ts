@@ -17,9 +17,7 @@ export class ProdutosComponent implements OnInit {
   pegarTodosProdutos() {
     this.produtoService.pegarProdutos().subscribe(resposta => {
       this.listaDeProdutos = resposta;
-      alert(resposta.forEach(p => p.quantidade))
-      console.log(this.listaDeProdutos)
-      console.log(this.listaDeProdutos.forEach(p => p))
+
     }, error => {
       console.log("Deu erro em pegar todos os produtos!")
     })
@@ -27,6 +25,5 @@ export class ProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.pegarTodosProdutos()
-    console.log(this.listaDeProdutos.forEach( p => p))
   }
 }
