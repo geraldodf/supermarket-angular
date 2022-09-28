@@ -14,6 +14,7 @@ export class ProdutosComponent implements OnInit {
 
   listaDeProdutos: Produto[] = [];
 
+
   pegarTodosProdutos() {
     this.produtoService.pegarProdutos().subscribe(resposta => {
       this.listaDeProdutos = resposta;
@@ -25,5 +26,6 @@ export class ProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.pegarTodosProdutos()
+
   }
 }
