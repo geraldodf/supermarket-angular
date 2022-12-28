@@ -12,9 +12,13 @@ export class ProdutoServiceService {
   }
 
   endpoint = 'http://localhost:8080/api/produtos';
-
+  endpointPaginado = 'http://localhost:8080/api/produtos/pag?page=0&size=20&sort=descricao,asc'
   pegarProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.endpoint)
+  }
+
+  pegarTodosProdutosPaginados(): Observable<Produto[]>{
+    return this.http.get<Produto[]>(this.endpointPaginado)
   }
 
 }

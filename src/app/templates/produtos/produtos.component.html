@@ -13,14 +13,14 @@
     <div class="side-bar col-md-3">
       <div class="search-hotel">
         <h3 class="agileits-sear-head">Procure aqui..</h3>
-        <form action="#" method="get">
+        <form action="" method="get" onclick="pegarTodosProdutosPaginado()">
           <input type="search" placeholder="Nome do produto..." name="search" required="">
           <input type="submit" value=" ">
         </form>
       </div>
 
       <div class="left-side">
-        <h3 class="agileits-sear-head">Tipos dos Produtos</h3>
+        <h3 class="agileits-sear-head">Seções</h3>
         <ul>
           <li>
             <input type="checkbox" class="checked">
@@ -90,20 +90,23 @@
       <div class="wrapper">
         <div></div>
         <div class="product-sec1">
-          <h3 class="heading-tittle">Óleos</h3>
-          <div class="col-md-4 product-men" *ngFor="let p of listaDeProdutos">
+          <h3 class="heading-tittle">Seção do Produto</h3>
+
+          <!-- template product -->
+
+          <div class="col-md-4 product-men" *ngFor="let p of listaDeTodosProdutos">
             <div class="men-pro-item simpleCart_shelfItem">
               <div class="men-thumb-item">
                 <img src="assets/images/mk4.jpg" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
+                <!-- <div class="men-cart-pro">
+                   <div class="inner-men-cart-pro">
                     <a href="single.html" class="link-product-add-cart">Ver mais</a>
                   </div>
-                </div>
+                </div> -->
               </div>
-              <div class="item-info-product " >
+              <div class="item-info-product" >
                 <h4>
-                  <a href="single.html">{{p.descricao | slice:0:24}}</a>
+                  <a>{{p.descricao | slice:0:20}}</a>
                 </h4>
 
                 <div class="info-product-price">
@@ -121,133 +124,11 @@
             </div>
           </div>
 
+          <!--/ template product -->
+
           <div class="clearfix"></div>
         </div>
-        <!-- //third section (oils) -->
-        <!-- fourth section (noodles) -->
-        <div class="product-sec1">
-          <h3 class="heading-tittle">Pasta & Noodles</h3>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="assets/images/mk7.jpg" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="single.html" class="link-product-add-cart">Quick View</a>
-                  </div>
-                </div>
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="single.html">Yippee Noodles, 65g</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$15.00</span>
-                  <del>$25.00</del>
-                </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart"/>
-                      <input type="hidden" name="add" value="1"/>
-                      <input type="hidden" name="business" value=" "/>
-                      <input type="hidden" name="item_name" value="YiPPee Noodles, 65g"/>
-                      <input type="hidden" name="amount" value="15.00"/>
-                      <input type="hidden" name="discount_amount" value="1.00"/>
-                      <input type="hidden" name="currency_code" value="USD"/>
-                      <input type="hidden" name="return" value=" "/>
-                      <input type="hidden" name="cancel_return" value=" "/>
-                      <input type="submit" name="submit" value="Add to cart" class="button"/>
-                    </fieldset>
-                  </form>
-                </div>
 
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="assets/images/mk8.jpg" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="single.html" class="link-product-add-cart">Quick View</a>
-                  </div>
-                </div>
-                <span class="product-new-top">New</span>
-
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="single.html">Wheat Pasta, 500g</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$98.00</span>
-                  <del>$120.00</del>
-                </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart"/>
-                      <input type="hidden" name="add" value="1"/>
-                      <input type="hidden" name="business" value=" "/>
-                      <input type="hidden" name="item_name" value="Wheat Pasta, 500g"/>
-                      <input type="hidden" name="amount" value="98.00"/>
-                      <input type="hidden" name="discount_amount" value="1.00"/>
-                      <input type="hidden" name="currency_code" value="USD"/>
-                      <input type="hidden" name="return" value=" "/>
-                      <input type="hidden" name="cancel_return" value=" "/>
-                      <input type="submit" name="submit" value="Add to cart" class="button"/>
-                    </fieldset>
-                  </form>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="assets/images/mk9.jpg" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="single.html" class="link-product-add-cart">Quick View</a>
-                  </div>
-                </div>
-                <span class="product-new-top">New</span>
-
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="single.html">Chinese Noodles, 68g</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$11.99</span>
-                  <del>$15.00</del>
-                </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart"/>
-                      <input type="hidden" name="add" value="1"/>
-                      <input type="hidden" name="business" value=" "/>
-                      <input type="hidden" name="item_name" value="Chinese Noodles, 68g"/>
-                      <input type="hidden" name="amount" value="11.99"/>
-                      <input type="hidden" name="discount_amount" value="1.00"/>
-                      <input type="hidden" name="currency_code" value="USD"/>
-                      <input type="hidden" name="return" value=" "/>
-                      <input type="hidden" name="cancel_return" value=" "/>
-                      <input type="submit" name="submit" value="Add to cart" class="button"/>
-                    </fieldset>
-                  </form>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-        <!-- //fourth section (noodles) -->
       </div>
     </div>
     <!-- //product right -->
