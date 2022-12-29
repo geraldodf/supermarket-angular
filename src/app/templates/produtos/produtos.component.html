@@ -1,21 +1,27 @@
 <div class="ads-grid">
   <div class="container">
     <!-- tittle heading -->
-    <h3 class="tittle-w3l">Produtos
+    <h3 class="tittle-w3l">
+      Produtos
       <span class="heading-style">
-					<i></i>
-					<i></i>
-					<i></i>
-				</span>
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
     </h3>
     <!-- //tittle heading -->
     <!-- product left -->
     <div class="side-bar col-md-3">
       <div class="search-hotel">
         <h3 class="agileits-sear-head">Procure aqui..</h3>
-        <form action="" method="get" onclick="pegarTodosProdutosPaginado()">
-          <input type="search" placeholder="Nome do produto..." name="search" required="">
-          <input type="submit" value=" ">
+        <form action="" method="get">
+          <input
+            type="search"
+            placeholder="Nome do produto..."
+            name="search"
+            required=""
+          />
+          <input type="submit" value="" />
         </form>
       </div>
 
@@ -23,66 +29,63 @@
         <h3 class="agileits-sear-head">Seções</h3>
         <ul>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Grãos</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Doces</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Hortifruti</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Bolachas e Biscoitos</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Massas</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Temperos e Condimentos</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Laticíneos</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Padaria</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Carnes</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Friamberia</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Higiene e Limpeza</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Bebidas</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Bebidas Alcoolicas</span>
           </li>
           <li>
-            <input type="checkbox" class="checked">
+            <input type="checkbox" class="checked" />
             <span class="span">Outros</span>
           </li>
-
-
         </ul>
       </div>
-
     </div>
     <!-- //product left -->
     <!-- product right -->
@@ -94,32 +97,38 @@
 
           <!-- template product -->
 
-          <div class="col-md-4 product-men" *ngFor="let p of listaDeTodosProdutos">
+          <div class="col-md-4 product-men" *ngFor="let p of listaDeProdutos">
             <div class="men-pro-item simpleCart_shelfItem">
               <div class="men-thumb-item">
-                <img src="assets/images/mk4.jpg" alt="">
+                <img src="assets/images/mk4.jpg" alt="" />
                 <!-- <div class="men-cart-pro">
                    <div class="inner-men-cart-pro">
                     <a href="single.html" class="link-product-add-cart">Ver mais</a>
                   </div>
                 </div> -->
               </div>
-              <div class="item-info-product" >
+              <div class="item-info-product">
                 <h4>
-                  <a>{{p.descricao | slice:0:20}}</a>
+                  <a>{{ p.descricao | slice : 0 : 20 }}</a>
                 </h4>
 
                 <div class="info-product-price">
-                  <span class="item_price">R${{p.precoDeVenda}}</span>
+                  <span class="item_price">R${{ p.precoDeVenda }}</span>
                 </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                <div
+                  class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"
+                >
                   <form action="#" method="post">
                     <fieldset>
-                      <input type="submit" name="submit" value="Adicionar a compra" class="button"/>
+                      <input
+                        type="submit"
+                        name="submit"
+                        value="Adicionar a compra"
+                        class="button"
+                      />
                     </fieldset>
                   </form>
                 </div>
-
               </div>
             </div>
           </div>
@@ -128,7 +137,6 @@
 
           <div class="clearfix"></div>
         </div>
-
       </div>
     </div>
     <!-- //product right -->

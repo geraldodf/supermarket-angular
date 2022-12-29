@@ -10,8 +10,7 @@ import { Produto } from '../../../models/Produto';
 export class ProdutosComponent implements OnInit {
   constructor(private produtoService: ProdutoServiceService) {}
 
-  listaDeTodosProdutos: Produto[] = [];
-  listaTodosProdutosPaginada: Produto[] = [];
+  listaDeProdutos: Produto[] = [];
 
   produtosTeste = [
     { descricao: 'Feijao', preco: 2.99, quantidade: 30 },
@@ -20,18 +19,20 @@ export class ProdutosComponent implements OnInit {
   ];
 
   pegarTodosProdutosPaginado() {
-    this.produtoService.pegarTodosProdutosPaginados().subscribe((resposta) => {
-      this.listaTodosProdutosPaginada = resposta;
-    },
-    (error) => {
-      console.log('Erro ao buscar produtos paginados');
-    });
+    this.produtoService.pegarTodosProdutosPaginados().subscribe(
+      (resposta) => {
+        this.listaDeProdutos = resposta;
+      },
+      (error) => {
+        console.log('Erro ao buscar produtos paginados');
+      }
+    );
   }
 
   pegarTodosProdutos() {
     this.produtoService.pegarProdutos().subscribe(
       (resposta) => {
-        this.listaDeTodosProdutos = resposta;
+        this.listaDeProdutos = resposta;
       },
       (error) => {
         console.log('Deu erro em pegar todos os produtos!');
