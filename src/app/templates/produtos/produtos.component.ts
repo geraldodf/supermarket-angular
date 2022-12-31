@@ -11,6 +11,7 @@ export class ProdutosComponent implements OnInit {
   constructor(private produtoService: ProdutoServiceService) {}
 
   listaDeProdutos: Produto[] = [];
+  descricao: string = '';
 
   produtosTeste = [
     { descricao: 'Feijao', preco: 2.99, quantidade: 30 },
@@ -20,6 +21,16 @@ export class ProdutosComponent implements OnInit {
 
   pegarTodosProdutosPaginado() {
     this.produtoService.pegarTodosProdutosPaginados().subscribe(
+      (resposta) => {
+        this.listaDeProdutos = resposta;
+      },
+      (error) => {
+        console.log('Erro ao buscar produtos paginados');
+      }
+    );
+  }
+  pegarProdutosPorDescricao(descricao: string) {
+    this.produtoService.pegarProdutosPorDescricao(descricao).subscribe(
       (resposta) => {
         this.listaDeProdutos = resposta;
       },
@@ -42,5 +53,9 @@ export class ProdutosComponent implements OnInit {
 
   ngOnInit(): void {
     this.pegarTodosProdutos();
+  }
+
+  onSubmit(form: Object) {
+    this.pegarProdutosPorDescricao(this.descricao);
   }
 }
