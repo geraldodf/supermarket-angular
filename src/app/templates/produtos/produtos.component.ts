@@ -33,6 +33,16 @@ export class ProdutosComponent implements OnInit {
       }
     );
   }
+  pegarProdutosPorDescricaoPaginados(descricao: string) {
+    this.produtoService.pegarProdutosPorDescricaoPaginados(descricao).subscribe(
+      (resposta) => {
+        this.listaDeProdutos = resposta.content;
+      },
+      (error) => {
+        console.log('Erro ao buscar produtos por descrição paginado');
+      }
+    );
+  }
 
   pegarTodosProdutos() {
     this.produtoService.pegarProdutos().subscribe(
@@ -49,6 +59,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   onSubmit(form: Object) {
-    this.pegarProdutosPorDescricao(this.descricao);
+    this.pegarProdutosPorDescricaoPaginados(this.descricao);
+    console.log("Apertou")
   }
 }
