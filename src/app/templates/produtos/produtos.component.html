@@ -29,62 +29,11 @@
       <div class="left-side">
         <h3 class="agileits-sear-head">Seções</h3>
         <ul>
-          <li>
+          <li *ngFor="let t of listaDeTipos">
             <input type="checkbox" class="checked" />
-            <span class="span">Grãos</span>
+            <span class="span">{{t}}</span>
           </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Doces</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Hortifruti</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Bolachas e Biscoitos</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Massas</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Temperos e Condimentos</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Laticíneos</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Padaria</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Carnes</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Friamberia</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Higiene e Limpeza</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Bebidas</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Bebidas Alcoolicas</span>
-          </li>
-          <li>
-            <input type="checkbox" class="checked" />
-            <span class="span">Outros</span>
-          </li>
+
         </ul>
       </div>
     </div>

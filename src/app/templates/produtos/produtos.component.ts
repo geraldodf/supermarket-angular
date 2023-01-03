@@ -11,6 +11,23 @@ export class ProdutosComponent implements OnInit {
   constructor(private produtoService: ProdutoServiceService) {}
 
   listaDeProdutos: Produto[] = [];
+  listaDeTipos: String[] = [
+    'Grãos',
+    'Doces',
+    'Hortifruti',
+    'Bolachas e biscoitos',
+    'Massas',
+    'Temperos e Condimentos',
+    'Laticíneos',
+    'Padaria',
+    'Carnes',
+    'Friamberia',
+    'Higiene e Limpeza',
+    'Bebidas',
+    'Bebidas Alcoolicas',
+    'Outros',
+  ];
+
   descricao: string = '';
 
   pegarTodosProdutosPaginados() {
@@ -60,6 +77,6 @@ export class ProdutosComponent implements OnInit {
 
   onSubmit(form: Object) {
     this.pegarProdutosPorDescricaoPaginados(this.descricao);
-    console.log("Apertou")
+    console.log('Apertou');
   }
 }
