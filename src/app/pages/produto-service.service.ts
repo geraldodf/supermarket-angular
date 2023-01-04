@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Produto } from '../../models/Produto';
 import { Page } from 'src/models/Page';
+import { TipoDoProduto } from 'src/models/TipoDoProduto';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +15,8 @@ export class ProdutoServiceService {
   paramSort = 'descricao';
   pagina = 0;
   tamanhoPagina = 20;
-  paramPaginacao = 'descricao';
   descricao = '';
-
+  
   endpoint = 'http://localhost:8080/api/produtos';
 
   endpointPaginado =
@@ -26,6 +26,12 @@ export class ProdutoServiceService {
 
   endpointDescricao =
     'http://localhost:8080/api/produtos/pesquisa-por-descricao?descricao=';
+
+    endpointTipoDosProdutos = 'http://localhost:8080/api/tipo-do-produto';
+
+  pegarTodosTiposDosProdutos(): Observable<TipoDoProduto[]> {
+    return this.http.get<TipoDoProduto[]>(this.endpointTipoDosProdutos);
+  }
 
   pegarProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.endpoint);

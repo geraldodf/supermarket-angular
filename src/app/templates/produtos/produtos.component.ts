@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoServiceService } from '../../pages/produto-service.service';
 import { Produto } from '../../../models/Produto';
+import { TipoDoProduto } from 'src/models/TipoDoProduto';
 
 @Component({
   selector: 'app-produtos',
@@ -11,24 +12,19 @@ export class ProdutosComponent implements OnInit {
   constructor(private produtoService: ProdutoServiceService) {}
 
   listaDeProdutos: Produto[] = [];
-  listaDeTipos: String[] = [
-    'Grãos',
-    'Doces',
-    'Hortifruti',
-    'Bolachas e biscoitos',
-    'Massas',
-    'Temperos e Condimentos',
-    'Laticíneos',
-    'Padaria',
-    'Carnes',
-    'Friamberia',
-    'Higiene e Limpeza',
-    'Bebidas',
-    'Bebidas Alcoolicas',
-    'Outros',
-  ];
+  listaDeTipos: TipoDoProduto[] = [];
 
   descricao: string = '';
+
+  pegarTodosTiposDosProdutos() {
+    this.produtoService.pegarTodosTiposDosProdutos().subscribe(
+      (resposta) => {
+        this.listaDeTipos = resposta;
+      }, (error) => {
+        console.log('Erro ao buscar todos os tipos dos produtos');
+      }
+    )
+  }
 
   pegarTodosProdutosPaginados() {
     this.produtoService.pegarTodosProdutosPaginados().subscribe(
@@ -73,10 +69,12 @@ export class ProdutosComponent implements OnInit {
   }
   ngOnInit(): void {
     this.pegarTodosProdutosPaginados();
+    this.pegarTodosTiposDosProdutos();
+    console.log(this.listaDeTipos);
   }
 
   onSubmit(form: Object) {
     this.pegarProdutosPorDescricaoPaginados(this.descricao);
-    console.log('Apertou');
+
   }
 }
