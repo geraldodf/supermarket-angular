@@ -14,6 +14,7 @@ export class ProdutosComponent implements OnInit {
   listaDeProdutos: Produto[] = [];
   listaDeTipos: TipoDoProduto[] = [];
 
+
   descricao: string = '';
 
   pegarTodosTiposDosProdutos() {
@@ -22,6 +23,15 @@ export class ProdutosComponent implements OnInit {
         this.listaDeTipos = resposta;
       }, (error) => {
         console.log('Erro ao buscar todos os tipos dos produtos');
+      }
+    )
+  }
+  pegarTipoDoProdutoPorId(id: number) {
+    this.produtoService.pegarTipoDoProdutoPorId(id).subscribe(
+      (resposta) => {
+        console.log(resposta)
+      }, (error) => {
+        console.log('Erro ao buscar tipo do produto pelo id');
       }
     )
   }
@@ -70,7 +80,6 @@ export class ProdutosComponent implements OnInit {
   ngOnInit(): void {
     this.pegarTodosProdutosPaginados();
     this.pegarTodosTiposDosProdutos();
-    console.log(this.listaDeTipos);
   }
 
   onSubmit(form: Object) {

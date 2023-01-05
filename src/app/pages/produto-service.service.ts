@@ -16,7 +16,7 @@ export class ProdutoServiceService {
   pagina = 0;
   tamanhoPagina = 20;
   descricao = '';
-  
+
   endpoint = 'http://localhost:8080/api/produtos';
 
   endpointPaginado =
@@ -27,11 +27,7 @@ export class ProdutoServiceService {
   endpointDescricao =
     'http://localhost:8080/api/produtos/pesquisa-por-descricao?descricao=';
 
-    endpointTipoDosProdutos = 'http://localhost:8080/api/tipo-do-produto';
-
-  pegarTodosTiposDosProdutos(): Observable<TipoDoProduto[]> {
-    return this.http.get<TipoDoProduto[]>(this.endpointTipoDosProdutos);
-  }
+  endpointTipoDosProdutos = 'http://localhost:8080/api/tipo-do-produto';
 
   pegarProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.endpoint);
@@ -48,5 +44,15 @@ export class ProdutoServiceService {
   pegarProdutosPorDescricaoPaginados(descricao: string): Observable<any> {
     this.descricao = descricao;
     return this.http.get<Page>(this.endpointDescricaoPaginado + descricao);
+  }
+
+  pegarTodosTiposDosProdutos(): Observable<TipoDoProduto[]> {
+    return this.http.get<TipoDoProduto[]>(this.endpointTipoDosProdutos);
+  }
+
+  pegarTipoDoProdutoPorId(id: number) {
+    return this.http.get<TipoDoProduto>(
+      this.endpointTipoDosProdutos + '/' + id
+    );
   }
 }
