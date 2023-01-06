@@ -2,7 +2,7 @@ import { Produto } from './Produto';
 import { Sort } from './Sort';
 
 export interface Page {
-  content: Produto[];
+  content: any[];
   pageable: string;
   totalElements: number;
   last: boolean;
