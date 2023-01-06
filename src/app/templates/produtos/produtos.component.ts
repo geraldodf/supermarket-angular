@@ -14,32 +14,34 @@ export class ProdutosComponent implements OnInit {
   listaDeProdutos: Produto[] = [];
   listaDeTipos: TipoDoProduto[] = [];
 
-
   descricao: string = '';
 
   pegarTodosTiposDosProdutos() {
     this.produtoService.pegarTodosTiposDosProdutos().subscribe(
       (resposta) => {
         this.listaDeTipos = resposta;
-      }, (error) => {
+      },
+      (error) => {
         console.log('Erro ao buscar todos os tipos dos produtos');
       }
-    )
+    );
   }
   pegarTipoDoProdutoPorId(id: number) {
     this.produtoService.pegarTipoDoProdutoPorId(id).subscribe(
       (resposta) => {
-        console.log(resposta)
-      }, (error) => {
+        console.log(resposta);
+      },
+      (error) => {
         console.log('Erro ao buscar tipo do produto pelo id');
       }
-    )
+    );
   }
 
   pegarTodosProdutosPaginados() {
     this.produtoService.pegarTodosProdutosPaginados().subscribe(
       (resposta) => {
         this.listaDeProdutos = resposta.content;
+        console.log("renderizando lista"+this.listaDeProdutos);
       },
       (error) => {
         console.log('Erro ao buscar produtos paginados');
@@ -80,10 +82,11 @@ export class ProdutosComponent implements OnInit {
   ngOnInit(): void {
     this.pegarTodosProdutosPaginados();
     this.pegarTodosTiposDosProdutos();
+    console.log("on init"+this.listaDeProdutos);
+    console.log(this.listaDeTipos);
   }
 
   onSubmit(form: Object) {
     this.pegarProdutosPorDescricaoPaginados(this.descricao);
-
   }
 }

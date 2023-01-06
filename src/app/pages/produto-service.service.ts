@@ -27,13 +27,14 @@ export class ProdutoServiceService {
   endpointDescricao =
     'http://localhost:8080/api/produtos/pesquisa-por-descricao?descricao=';
 
-  endpointTipoDosProdutos = 'http://localhost:8080/api/tipo-do-produto';
+  endpointTipoDosProdutos =
+    'http://localhost:8080/api/tipo-do-produto/pag?page=0&size=50&sort=nomeTipoDoProduto,asc';
 
   pegarProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.endpoint);
   }
 
-  pegarTodosProdutosPaginados(): Observable<any> {
+  pegarTodosProdutosPaginados(): Observable<Page> {
     return this.http.get<Page>(this.endpointPaginado);
   }
 
