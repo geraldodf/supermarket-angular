@@ -20,18 +20,9 @@ export class ProdutosComponent implements OnInit {
   pegarTodosTiposDosProdutos() {
     this.produtoService.pegarTodosTiposDosProdutosPaginados().subscribe(
       (resposta) => {
-        this.listaDeTipos = resposta.content;
+        this.listaDeTipos = resposta;
       }, (error) => {
         console.log('Erro ao buscar todos os tipos dos produtos paginados');
-      }
-    )
-  }
-  pegarTipoDoProdutoPorId(id: number) {
-    this.produtoService.pegarTipoDoProdutoPorId(id).subscribe(
-      (resposta) => {
-        console.log(resposta)
-      }, (error) => {
-        console.log('Erro ao buscar tipo do produto pelo id');
       }
     )
   }
