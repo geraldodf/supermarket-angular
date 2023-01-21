@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoServiceService } from '../../pages/produto-service.service';
-import { Produto } from '../../../models/Produto';
-import { TipoDoProduto } from 'src/models/TipoDoProduto';
+import { Product } from '../../../models/Product';
+import { ProductType } from 'src/models/ProductType';
 
 @Component({
   selector: 'app-produtos',
@@ -11,16 +11,16 @@ import { TipoDoProduto } from 'src/models/TipoDoProduto';
 export class ProdutosComponent implements OnInit {
   constructor(private produtoService: ProdutoServiceService) {}
 
-  listaDeProdutos: Produto[] = [];
-  listaDeTipos: TipoDoProduto[] = [];
+  products: Product[] = [];
+  types: ProductType[] = [];
 
 
-  descricao: string = '';
+  description: string = '';
 
   pegarTodosTiposDosProdutos() {
     this.produtoService.pegarTodosTiposDosProdutosPaginados().subscribe(
       (resposta) => {
-        this.listaDeTipos = resposta;
+        this.types = resposta;
       }, (error) => {
         console.log('Erro ao buscar todos os tipos dos produtos paginados');
       }
@@ -30,7 +30,7 @@ export class ProdutosComponent implements OnInit {
   pegarTodosProdutosPaginados() {
     this.produtoService.pegarTodosProdutosPaginados().subscribe(
       (resposta) => {
-        this.listaDeProdutos = resposta.content;
+        this.products = resposta.content;
       },
       (error) => {
         console.log('Erro ao buscar produtos paginados');
@@ -40,17 +40,17 @@ export class ProdutosComponent implements OnInit {
   pegarProdutosPorDescricao(descricao: string) {
     this.produtoService.pegarProdutosPorDescricao(descricao).subscribe(
       (resposta) => {
-        this.listaDeProdutos = resposta;
+        this.products = resposta;
       },
       (error) => {
         console.log('Erro ao buscar produtos por descrição');
       }
     );
   }
-  pegarProdutosPorDescricaoPaginados(descricao: string) {
-    this.produtoService.pegarProdutosPorDescricaoPaginados(descricao).subscribe(
+  pegarProdutosPorDescricaoPaginados(description: string) {
+    this.produtoService.pegarProdutosPorDescricaoPaginados(description).subscribe(
       (resposta) => {
-        this.listaDeProdutos = resposta.content;
+        this.products = resposta.content;
       },
       (error) => {
         console.log('Erro ao buscar produtos por descrição paginado');
@@ -58,22 +58,12 @@ export class ProdutosComponent implements OnInit {
     );
   }
 
-  pegarTodosProdutos() {
-    this.produtoService.pegarProdutos().subscribe(
-      (resposta) => {
-        this.listaDeProdutos = resposta;
-      },
-      (error) => {
-        console.log('Deu erro em pegar todos os produtos!');
-      }
-    );
-  }
   ngOnInit(): void {
     this.pegarTodosProdutosPaginados();
     this.pegarTodosTiposDosProdutos();
   }
 
   onSubmit(form: Object) {
-    this.pegarProdutosPorDescricaoPaginados(this.descricao);
+    this.pegarProdutosPorDescricaoPaginados(this.description);
   }
 }

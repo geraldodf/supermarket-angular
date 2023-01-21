@@ -1,61 +1,49 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Produto } from '../../models/Produto';
-import { Page } from 'src/models/Page';
-import { TipoDoProduto } from 'src/models/TipoDoProduto';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Product} from '../../models/Product';
+import {Page} from 'src/models/Page';
+import {ProductType} from 'src/models/ProductType';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoServiceService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   tipoSort = 'asc';
-  paramSort = 'descricao';
-  pagina = 0;
-  tamanhoPagina = 20;
-  descricao = '';
+  paramSort = 'description';
+  pageNumber = 0;
+  pageSize = 20;
+  description = '';
 
-  endpoint = 'http://localhost:8080/api/produtos';
+  endpoint = 'http://localhost:8080/api/products';
 
-  endpointPaginado =
-    'http://localhost:8080/api/produtos/pag?page=0&size=20&sort=descricao,asc';
+  endpointAllPaged =
+    `${this.endpoint}/products?page=${this.pageNumber}size=${this.pageSize}&sort=${this.paramSort},${this.tipoSort}`;
 
-  endpointDescricaoPaginado = `http://localhost:8080/api/produtos/pagDesc?page=${this.pagina}size=${this.tamanhoPagina}&sort=${this.descricao},${this.tipoSort}&descricao=`;
+  endpointDescriptionPaged = `${this.endpoint}/products-description?page=${this.pageNumber}&size=${this.pageSize}&sort&description=${this.description}`;
+  endpointTipoDosProdutosPaginados = 'http://localhost:8080/api/products-types/types?sort=nameProductType,asc';
 
-  endpointDescricao =
-    'http://localhost:8080/api/produtos/pesquisa-por-descricao?descricao=';
-
-    endpointTipoDosProdutos = 'http://localhost:8080/api/tipo-do-produto';
-
-  endpointTipoDosProdutosPaginados = 'http://localhost:8080/api/tipo-do-produto/pag-com-sort?sort=nomeTipoDoProduto,asc';
-
-  pegarProdutos(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.endpoint);
+  pegarProdutos(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.endpoint);
   }
 
   pegarTodosProdutosPaginados(): Observable<Page> {
-    return this.http.get<Page>(this.endpointPaginado);
+    return this.http.get<Page>(this.endpointAllPaged);
   }
 
   pegarProdutosPorDescricao(descricao: string) {
-    return this.http.get<Produto[]>(this.endpointDescricao + descricao);
+    return this.http.get<Product[]>(this.endpointDescriptionPaged + descricao);
   }
 
-  pegarProdutosPorDescricaoPaginados(descricao: string): Observable<any> {
-    this.descricao = descricao;
-    return this.http.get<Page>(this.endpointDescricaoPaginado + descricao);
+  pegarProdutosPorDescricaoPaginados(description: string): Observable<any> {
+    this.description = description;
+    return this.http.get<Page>(this.endpointDescriptionPaged + description);
   }
 
-  pegarTodosTiposDosProdutosPaginados(): Observable<TipoDoProduto[]> {
-    return this.http.get<TipoDoProduto[]>(this.endpointTipoDosProdutosPaginados);
+  pegarTodosTiposDosProdutosPaginados(): Observable<ProductType[]> {
+    return this.http.get<ProductType[]>(this.endpointTipoDosProdutosPaginados);
   }
-
-  pegarTipoDoProdutoPorId(id: number) {
-    return this.http.get<TipoDoProduto>(
-      this.endpointTipoDosProdutos + '/' + id
-    );
-  }
-
 }

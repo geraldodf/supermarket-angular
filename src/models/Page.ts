@@ -1,4 +1,3 @@
-import { Produto } from './Produto';
 import { Sort } from './Sort';
 
 export interface Page {

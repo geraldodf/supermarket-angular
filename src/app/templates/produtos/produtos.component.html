@@ -18,9 +18,9 @@
           <input
             type="search"
             placeholder="Nome do produto..."
-            name="descricao"
+            name="description"
             required=""
-            [(ngModel)]="descricao"
+            [(ngModel)]="description"
           />
           <input type="submit" value="" />
         </form>
@@ -29,9 +29,9 @@
       <div class="left-side">
         <h3 class="agileits-sear-head">Seções</h3>
         <ul>
-          <li *ngFor="let t of listaDeTipos ">
+          <li *ngFor="let t of types ">
             <input type="radio" class="" />
-            <span class="span">{{ t.nomeTipoDoProduto }}</span>
+            <span class="span">{{ t.nameProductType }}</span>
           </li>
         </ul>
       </div>
@@ -46,7 +46,7 @@
 
           <!-- template product -->
 
-          <div class="col-md-4 product-men" *ngFor="let p of listaDeProdutos">
+          <div class="col-md-4 product-men" *ngFor="let p of products">
             <div class="men-pro-item simpleCart_shelfItem">
               <div class="men-thumb-item">
                 <img src="assets/images/mk4.jpg" alt="" />
@@ -58,11 +58,11 @@
               </div>
               <div class="item-info-product">
                 <h4>
-                  <a>{{ p.descricao | slice : 0 : 20 }}</a>
+                  <a>{{ p.description | slice : 0 : 20 }}</a>
                 </h4>
 
                 <div class="info-product-price">
-                  <span class="item_price">R${{ p.precoDeVenda }}</span>
+                  <span class="item_price">R${{ p.priceSale }}</span>
                 </div>
                 <div
                   class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"
