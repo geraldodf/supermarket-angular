@@ -8,11 +8,11 @@ import {ProductType} from 'src/models/ProductType';
 @Injectable({
   providedIn: 'root',
 })
-export class ProdutoServiceService {
+export class ProductServiceService {
   constructor(private http: HttpClient) {
   }
 
-  tipoSort = 'asc';
+  sortType = 'asc';
   paramSort = 'description';
   pageNumber = 0;
   pageSize = 20;
@@ -21,29 +21,21 @@ export class ProdutoServiceService {
   endpoint = 'http://localhost:8080/api/products';
 
   endpointAllPaged =
-    `${this.endpoint}/products?page=${this.pageNumber}size=${this.pageSize}&sort=${this.paramSort},${this.tipoSort}`;
+    `${this.endpoint}/products?page=${this.pageNumber}size=${this.pageSize}&sort=${this.paramSort},${this.sortType}`;
 
   endpointDescriptionPaged = `${this.endpoint}/products-description?page=${this.pageNumber}&size=${this.pageSize}&sort&description=${this.description}`;
-  endpointTipoDosProdutosPaginados = 'http://localhost:8080/api/products-types/types?sort=nameProductType,asc';
+  endpointPaginatedProductTypes = 'http://localhost:8080/api/products-types/types?sort=nameProductType,asc';
 
-  pegarProdutos(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.endpoint);
-  }
-
-  pegarTodosProdutosPaginados(): Observable<Page> {
+  getAllPaginatedProducts(): Observable<Page> {
     return this.http.get<Page>(this.endpointAllPaged);
   }
 
-  pegarProdutosPorDescricao(descricao: string) {
-    return this.http.get<Product[]>(this.endpointDescriptionPaged + descricao);
-  }
-
-  pegarProdutosPorDescricaoPaginados(description: string): Observable<any> {
+  getProductsByDescriptionPaginated(description: string): Observable<any> {
     this.description = description;
     return this.http.get<Page>(this.endpointDescriptionPaged + description);
   }
 
-  pegarTodosTiposDosProdutosPaginados(): Observable<ProductType[]> {
-    return this.http.get<ProductType[]>(this.endpointTipoDosProdutosPaginados);
+  getAllProductTypesPaginated(): Observable<ProductType[]> {
+    return this.http.get<ProductType[]>(this.endpointPaginatedProductTypes);
   }
 }

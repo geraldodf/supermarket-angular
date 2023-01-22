@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutoServiceService } from '../../pages/produto-service.service';
+import { ProductServiceService } from '../../pages/product-service.service';
 import { Product } from '../../../models/Product';
 import { ProductType } from 'src/models/ProductType';
 
@@ -9,7 +9,7 @@ import { ProductType } from 'src/models/ProductType';
   styleUrls: ['./produtos.component.css'],
 })
 export class ProdutosComponent implements OnInit {
-  constructor(private produtoService: ProdutoServiceService) {}
+  constructor(private produtoService: ProductServiceService) {}
 
   products: Product[] = [];
   types: ProductType[] = [];
@@ -18,7 +18,7 @@ export class ProdutosComponent implements OnInit {
   description: string = '';
 
   pegarTodosTiposDosProdutos() {
-    this.produtoService.pegarTodosTiposDosProdutosPaginados().subscribe(
+    this.produtoService.getAllProductTypesPaginated().subscribe(
       (resposta) => {
         this.types = resposta;
       }, (error) => {
@@ -28,7 +28,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   pegarTodosProdutosPaginados() {
-    this.produtoService.pegarTodosProdutosPaginados().subscribe(
+    this.produtoService.getAllPaginatedProducts().subscribe(
       (resposta) => {
         this.products = resposta.content;
       },
@@ -37,18 +37,9 @@ export class ProdutosComponent implements OnInit {
       }
     );
   }
-  pegarProdutosPorDescricao(descricao: string) {
-    this.produtoService.pegarProdutosPorDescricao(descricao).subscribe(
-      (resposta) => {
-        this.products = resposta;
-      },
-      (error) => {
-        console.log('Erro ao buscar produtos por descrição');
-      }
-    );
-  }
+
   pegarProdutosPorDescricaoPaginados(description: string) {
-    this.produtoService.pegarProdutosPorDescricaoPaginados(description).subscribe(
+    this.produtoService.getProductsByDescriptionPaginated(description).subscribe(
       (resposta) => {
         this.products = resposta.content;
       },
