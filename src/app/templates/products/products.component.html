@@ -30,7 +30,7 @@
         <h3 class="agileits-sear-head">Seções</h3>
         <ul>
           <li *ngFor="let t of types ">
-            <input type="radio" class="" />
+            <input type="radio" class="" name="type"(change)="getProductsByProductType(t)" />
             <span class="span">{{ t.nameProductType }}</span>
           </li>
         </ul>

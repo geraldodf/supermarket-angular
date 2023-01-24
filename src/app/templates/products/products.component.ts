@@ -49,6 +49,17 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  getProductsByProductType(type: ProductType){
+    this.productsService.getProductsByProductType(type).subscribe(
+      (products) => {
+        this.products = products;
+      },
+      (error) => {
+        console.log('Error when fetching products by description paginated.', error);
+      }
+    );
+  }
+
   ngOnInit(): void {
     this.getAllProductsPaginated();
     this.getAllProductsTypesPaginated();

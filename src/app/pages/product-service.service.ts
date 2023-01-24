@@ -23,7 +23,8 @@ export class ProductServiceService {
   endpointAllPaged =
     `${this.endpoint}/products?page=${this.pageNumber}size=${this.pageSize}&sort=${this.paramSort},${this.sortType}`;
 
-  endpointDescriptionPaged = `${this.endpoint}/products-description?page=${this.pageNumber}&size=${this.pageSize}&sort&description=${this.description}`;
+  endpointDescriptionPaged = `${this.endpoint}/products-description?page=${this.pageNumber}&size=${this.pageSize}&sort=description,asc&description=${this.description}`;
+  endpointPaginatedProductByProductTypeId = `${this.endpoint}/products-type-id?page=${this.pageNumber}&size=${this.pageSize}&sort=description,asc`
   endpointPaginatedProductTypes = 'http://localhost:8080/api/products-types/types?sort=nameProductType,asc';
 
   getAllPaginatedProducts(): Observable<Page> {
@@ -38,4 +39,10 @@ export class ProductServiceService {
   getAllProductTypesPaginated(): Observable<ProductType[]> {
     return this.http.get<ProductType[]>(this.endpointPaginatedProductTypes);
   }
+
+  getProductsByProductType(type: ProductType): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.endpointPaginatedProductByProductTypeId}&typeId=${type.id}`);
+  }
+
+
 }
