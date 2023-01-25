@@ -13,9 +13,8 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   types: ProductType[] = [];
-
-
   description: string = '';
+  nameTypeSelected: string = '';
 
   getAllProductsTypesPaginated() {
     this.productsService.getAllProductTypesPaginated().subscribe(
@@ -53,6 +52,8 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProductsByProductType(type).subscribe(
       (products) => {
         this.products = products;
+        this.nameTypeSelected = type.nameProductType;
+        console.log(this.nameTypeSelected)
       },
       (error) => {
         console.log('Error when fetching products by description paginated.', error);
