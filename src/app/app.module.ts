@@ -9,7 +9,8 @@ import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { SpecialOffersComponent } from './templates/special-offers/special-offers.component';
 import { ProductsComponent } from './templates/products/products.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { CartComponent } from './pages/cart/cart.component'
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms'
     FooterComponent,
     SpecialOffersComponent,
     ProductsComponent,
+    CartComponent,
   ],
   imports: [BrowserModule, RouterModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
