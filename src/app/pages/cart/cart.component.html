@@ -1,60 +1,30 @@
-<div class="ads-grid">
-  <div class="container">
-    <!-- tittle heading -->
-    <h3 class="tittle-w3l">
-      Carrinho de Compras
-      <span class="heading-style">
-        <i></i>
-        <i></i>
-        <i></i>
-      </span>
-    </h3>
-    <!-- //tittle heading -->
-
-    <div class="agileinfo-ads-display col-md-12">
-      <div class="wrapper">
-        <div></div>
-        <div class="product-sec1">
-          <h3 class="heading-tittle"></h3>
-
-          <!-- template product -->
-
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="assets/images/mk4.jpg" alt=""/>
-                <!-- <div class="men-cart-pro">
-                   <div class="inner-men-cart-pro">
-                    <a href="single.html" class="link-product-add-cart">Ver mais</a>
-                  </div>
-                </div> -->
-              </div>
-              <div class="item-info-product">
-
-
-                <div class="info-product-price">
-                  <span class="item_price">Nome do produto aqui</span>
-                </div>
-                <div
-                  class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"
-                >
-
-
-                </div>
-
-                <div class=""><button class="bg-primary "> Finalizar Compra</button></div>
-
-              </div>
-            </div>
-          </div>
-
-          <!--/ template product -->
-
-          <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-    <!-- //product right -->
+<div class="container product-sec1 mt-5 mb-5">
+  <h2 class="text-center">Carrinho de Compras</h2>
+  <table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th class="text-center">Imagem Produto</th>
+      <th class="text-center">Produto</th>
+      <th class="text-center">Valor</th>
+      <th class="text-center">Quantidade</th>
+      <th class="text-center">Valor Total</th>
+      <th class="text-center">Excluir</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="align-items-center">
+      <td class="text-center mr-2 ml-2"><img src="assets/images/mk4.jpg" alt="Imagem Produto" style="height: 50px"></td>
+      <td class="text-center mr-2 ml-2">Nome do Produto</td>
+      <td class="text-center mr-2 ml-2">R$ Valor</td>
+      <td class="text-center mr-2 ml-2"><input type="number" min="1" value="1"></td>
+      <td class="text-center mr-2 ml-2">R$ Valor Total</td>
+      <td class="text-center mr-2 ml-2"><button class="btn btn-danger">Excluir</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <h4>Total: R$ Valor Total</h4>
+    <button class="btn btn-success  mt-4">Finalizar Compra</button>
   </div>
 </div>
-<!-- //top products -->
+
