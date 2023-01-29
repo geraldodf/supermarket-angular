@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../../pages/product-service.service';
 import { Product } from '../../../models/Product';
 import { ProductType } from 'src/models/ProductType';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -9,13 +10,12 @@ import { ProductType } from 'src/models/ProductType';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  constructor(private productsService: ProductServiceService) {}
+  constructor(private productsService: ProductServiceService, private router: Router) {}
 
   products: Product[] = [];
   types: ProductType[] = [];
   description: string = '';
   nameTypeSelected: string = '';
-
   getAllProductsTypesPaginated() {
     this.productsService.getAllProductTypesPaginated().subscribe(
       (types) => {
@@ -59,6 +59,10 @@ export class ProductsComponent implements OnInit {
         console.log('Error when fetching products by description paginated.', error);
       }
     );
+  }
+
+  cart(){
+    this.router.navigate(['/cart'])
   }
 
   ngOnInit(): void {

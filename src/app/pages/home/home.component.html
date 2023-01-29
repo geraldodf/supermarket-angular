@@ -1,6 +1,5 @@
 <app-header></app-header>
 
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
 
@@ -18,8 +17,13 @@
   </div>
 
 </div>
-<app-cart></app-cart>
-<!--<app-produtos></app-produtos>-->
+
+<div class="container-fluid">
+  <router-outlet>
+    <app-produtos></app-produtos>
+  </router-outlet>
+</div>
+
 <!--<app-ofertas-especiais></app-ofertas-especiais>-->
 
 

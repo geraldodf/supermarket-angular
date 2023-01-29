@@ -12,6 +12,8 @@ export class ProductServiceService {
   constructor(private http: HttpClient) {
   }
 
+
+  productsList: Product[] = [];
   sortType = 'asc';
   paramSort = 'description';
   pageNumber = 0;
@@ -44,5 +46,12 @@ export class ProductServiceService {
     return this.http.get<Product[]>(`${this.endpointPaginatedProductByProductTypeId}&typeId=${type.id}`);
   }
 
+  getProductsListCart(): Product[] {
+    return this.productsList;
+  }
+
+  setProductsListCat(productsList: Product[]) {
+    this.productsList = productsList;
+  }
 
 }

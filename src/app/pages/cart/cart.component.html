@@ -1,24 +1,26 @@
 <div class="container product-sec1 mt-5 mb-5">
-  <h2 class="text-center">Carrinho de Compras</h2>
+  <h2 class="text-center pb-5 ">Carrinho de Compras</h2>
   <table class="table table-hover">
     <thead class="thead-light">
     <tr>
-      <th class="text-center">Imagem Produto</th>
-      <th class="text-center">Produto</th>
-      <th class="text-center">Valor</th>
+      <th class="text-center"></th>
+      <th class="text-center">Descrição</th>
+      <th class="text-center">Valor Unitário</th>
       <th class="text-center">Quantidade</th>
       <th class="text-center">Valor Total</th>
       <th class="text-center">Excluir</th>
     </tr>
     </thead>
     <tbody>
-    <tr class="align-items-center">
-      <td class="text-center mr-2 ml-2"><img src="assets/images/mk4.jpg" alt="Imagem Produto" style="height: 50px"></td>
-      <td class="text-center mr-2 ml-2">Nome do Produto</td>
-      <td class="text-center mr-2 ml-2">R$ Valor</td>
-      <td class="text-center mr-2 ml-2"><input type="number" min="1" value="1"></td>
-      <td class="text-center mr-2 ml-2">R$ Valor Total</td>
-      <td class="text-center mr-2 ml-2"><button class="btn btn-danger">Excluir</button></td>
+    <tr class="align-items-center" *ngFor="let p of list">
+      <td class="text-center"><img src="assets/images/mk4.jpg" alt="Imagem Produto" style="height: 50px"></td>
+      <td class="text-center">Nome do Produto</td>
+      <td class="text-center">R$ Valor un</td>
+      <td class="text-center m-1"><input type="number" min="1" value="1"></td>
+      <td class="text-center">R$ Valor Total</td>
+      <td class="text-center">
+        <button class="btn btn-danger">Excluir</button>
+      </td>
     </tr>
     </tbody>
   </table>
@@ -27,4 +29,5 @@
     <button class="btn btn-success  mt-4">Finalizar Compra</button>
   </div>
 </div>
+<button class="btn btn-danger" routerLink="/"></button>
 
