@@ -12,7 +12,6 @@ export class ProductServiceService {
   constructor(private http: HttpClient) {
   }
 
-
   productsList: Product[] = [];
   sortType = 'asc';
   paramSort = 'description';
