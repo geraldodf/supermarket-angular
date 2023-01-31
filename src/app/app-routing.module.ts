@@ -6,7 +6,7 @@ import {CartComponent} from "./pages/cart/cart.component";
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('../app/app.module').then(a => a.AppModule)
   },
   {path: 'cart', component: CartComponent},
   {path: 'home', component: ProductsComponent}
