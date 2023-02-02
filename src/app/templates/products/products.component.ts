@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../models/Product';
-import { ProductType } from 'src/models/ProductType';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Product} from '../../../models/Product';
+import {ProductType} from 'src/models/ProductType';
+import {Router} from '@angular/router';
 import {ProductServiceService} from "../product-service.service";
 
 @Component({
@@ -10,12 +10,21 @@ import {ProductServiceService} from "../product-service.service";
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  constructor(private productsService: ProductServiceService, private router: Router) {}
+  constructor(private productsService: ProductServiceService, private router: Router) {
+  }
 
   products: Product[] = [];
   types: ProductType[] = [];
+
+
   description: string = '';
   nameTypeSelected: string = '';
+
+
+  addToCart(product: Product) {
+    this.productsService.addToCart(product);
+  }
+
   getAllProductsTypesPaginated() {
     this.productsService.getAllProductTypesPaginated().subscribe(
       (types) => {
@@ -48,7 +57,7 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  getProductsByProductType(type: ProductType){
+  getProductsByProductType(type: ProductType) {
     this.productsService.getProductsByProductType(type).subscribe(
       (products) => {
         this.products = products;
@@ -61,7 +70,7 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  cart(){
+  cart() {
     this.router.navigate(['/cart'])
   }
 

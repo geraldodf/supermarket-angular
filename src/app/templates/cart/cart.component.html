@@ -12,11 +12,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="align-items-center" *ngFor="let p of list">
+    <tr class="align-items-center" *ngFor="let p of productList">
       <td class="text-center"><img src="../../../assets/images/mk4.jpg" alt="Imagem Produto" style="height: 50px"></td>
-      <td class="text-center">Nome do Produto</td>
-      <td class="text-center">R$ Valor un</td>
-      <td class="text-center m-1"><input type="number" min="1" value="1"></td>
+      <td class="text-center">{{p.description}}</td>
+      <td class="text-center">{{p.priceSale}}</td>
+      <td class="text-center m-1"><input type="number" min="1" max="{{p.quantity}}" value="1"></td>
       <td class="text-center">R$ Valor Total</td>
       <td class="text-center">
         <button class="btn btn-danger">Excluir</button>
