@@ -16,18 +16,19 @@
       <td class="text-center"><img src="../../../assets/images/mk4.jpg" alt="Imagem Produto" style="height: 50px"></td>
       <td class="text-center">{{p.description}}</td>
       <td class="text-center">{{p.priceSale}}</td>
-      <td class="text-center m-1"><input type="number" min="1" max="{{p.quantity}}" value="1"></td>
-      <td class="text-center">R$ Valor Total</td>
+      <td class="text-center m-1"><input type="number" min="1" max="{{p.quantity}}" value="{{p.quantitySelected}}"
+                                         (input)="updateQuantity(($any($event.target).value), p)"></td>
+      <td class="text-center">{{p.priceTotalSale  | number: '1.2-2'}}</td>
       <td class="text-center">
-        <button class="btn btn-danger">Excluir</button>
+        <button class="btn btn-danger" (click)="removeProduct(p)">Excluir</button>
       </td>
     </tr>
     </tbody>
   </table>
   <div class="text-right">
-    <h4>Total: R$ Valor Total</h4>
+    <h1>R$ {{salePrice| number: '1.2-2'}}</h1>
+    <button class="btn btn-danger  mt-4 me-2" routerLink="/">Voltar</button>
     <button class="btn btn-success  mt-4">Finalizar Compra</button>
   </div>
 </div>
-<button class="btn btn-danger" routerLink="/"></button>
 
