@@ -14,7 +14,35 @@ export class CartComponent implements OnInit {
 
   productList: Product[] = [];
 
-  ngOnInit(): void {
-    this.productList = this.productService.getProductsListCart()
+  ngOnInit() {
+    this.loadProducts();
+    this.initCart();
+  }
+
+  initCart(){
+    this.productService.getProductsCart().forEach(p => this.addProduct(p))
+  }
+  addProduct(product: Product) {
+    this.productList.push(product);
+    this.saveProducts();
+  }
+
+  removeProduct(product: Product) {
+    const index = this.productList.indexOf(product);
+    if (index > -1) {
+      this.productList.splice(index, 1);
+      this.saveProducts();
+    }
+  }
+
+  saveProducts() {
+    localStorage.setItem('productList', JSON.stringify(this.productList));
+  }
+
+  loadProducts() {
+    const storedProducts = localStorage.getItem('productList');
+    if (storedProducts) {
+      this.productList = JSON.parse(storedProducts);
+    }
   }
 }

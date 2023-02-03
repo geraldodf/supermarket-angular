@@ -15,8 +15,6 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   types: ProductType[] = [];
-
-
   description: string = '';
   nameTypeSelected: string = '';
 

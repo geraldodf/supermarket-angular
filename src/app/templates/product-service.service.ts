@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Product} from '../../models/Product';
 import {Page} from 'src/models/Page';
 import {ProductType} from 'src/models/ProductType';
+import {CartComponent} from "./cart/cart.component";
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,6 @@ export class ProductServiceService {
   }
 
   productsToCart: Product[] = [];
-  productsList: Product[] = [];
   sortType = 'asc';
   paramSort = 'description';
   pageNumber = 0;
@@ -29,11 +29,12 @@ export class ProductServiceService {
   endpointPaginatedProductByProductTypeId = `${this.endpoint}/products-type-id?page=${this.pageNumber}&size=${this.pageSize}&sort=description,asc`
   endpointPaginatedProductTypes = 'http://localhost:8080/api/products-types/types?sort=nameProductType,asc';
 
+
   addToCart(product: Product) {
     this.productsToCart.push(product);
   }
 
-  getProductsListCart(): Product[] {
+  getProductsCart(): Product[] {
     return this.productsToCart;
   }
 
