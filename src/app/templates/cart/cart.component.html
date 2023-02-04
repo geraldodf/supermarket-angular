@@ -7,7 +7,7 @@
       <th class="text-center">Descrição</th>
       <th class="text-center">Valor Unitário</th>
       <th class="text-center">Quantidade</th>
-      <th class="text-center">Valor Total</th>
+      <th class="text-center">Valor Produtos</th>
       <th class="text-center">Excluir</th>
     </tr>
     </thead>
@@ -16,7 +16,7 @@
       <td class="text-center"><img src="../../../assets/images/mk4.jpg" alt="Imagem Produto" style="height: 50px"></td>
       <td class="text-center">{{p.description}}</td>
       <td class="text-center">{{p.priceSale}}</td>
-      <td class="text-center m-1"><input type="number" min="1" max="{{p.quantity}}" value="{{p.quantitySelected}}"
+      <td class="text-center m-1"><input type="number" min="1" max="{{p.quantity}}" value="{{p.quantitySelected}}" style="width: 50px;"
                                          (input)="updateQuantity(($any($event.target).value), p)"></td>
       <td class="text-center">{{p.priceTotalSale  | number: '1.2-2'}}</td>
       <td class="text-center">

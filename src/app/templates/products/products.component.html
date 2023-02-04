@@ -22,7 +22,7 @@
             required=""
             [(ngModel)]="description"
           />
-          <input type="submit" value="" />
+          <input type="submit" value=""/>
         </form>
       </div>
 
@@ -30,7 +30,7 @@
         <h3 class="agileits-sear-head">Seções</h3>
         <ul>
           <li *ngFor="let t of types ">
-            <input type="radio" class="" name="type"(change)="getProductsByProductType(t)" />
+            <input type="radio" class="" name="type" (change)="getProductsByProductType(t)"/>
             <span class="span">{{ t.nameProductType }}</span>
           </li>
         </ul>
@@ -49,7 +49,8 @@
           <div class="col-md-4 product-men" *ngFor="let p of products">
             <div class="men-pro-item simpleCart_shelfItem">
               <div class="men-thumb-item">
-                <img src="assets/images/mk4.jpg" alt="" />
+                <img src="assets/images/mk4.jpg" alt=""/>
+
                 <!-- <div class="men-cart-pro">
                    <div class="inner-men-cart-pro">
                     <a href="single.html" class="link-product-add-cart">Ver mais</a>
@@ -58,12 +59,12 @@
               </div>
               <div class="item-info-product">
                 <h4>
-                  <a>{{ p.description | slice : 0 : 20 }}</a>
+                  <a><strong>{{ p.description | slice : 0 : 20 }}</strong></a>
                 </h4>
-
                 <div class="info-product-price">
                   <span class="item_price">R${{ p.priceSale }}</span>
                 </div>
+                <p class="h6 text-muted">Quant.: {{p.quantity}}</p>
                 <div
                   class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"
                 >
