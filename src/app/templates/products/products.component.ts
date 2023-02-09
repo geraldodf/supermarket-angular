@@ -4,7 +4,6 @@ import {ProductType} from 'src/models/ProductType';
 import {Router} from '@angular/router';
 import {ProductServiceService} from "../product-service.service";
 import {Page} from "../../../models/Page";
-import {Sort} from "../../../models/Sort";
 
 @Component({
   selector: 'app-produtos',
@@ -20,20 +19,17 @@ export class ProductsComponent implements OnInit {
   types: ProductType[] = [];
   description: string = '';
   nameTypeSelected: string = '';
+  currentPage: number = 0;
 
-  // @ts-ignore
-  private currentPage: Page = {
-    content: [],
-    pageable: '',
-    totalElements: 0,
-    last: false,
-    totalPages: 0,
-    size: 0,
-    number: 0,
-    numberOfElements: 0,
-    first: false,
-    empty: false
-  };
+
+  ngOnInit(): void {
+    this.getAllProductsPaginated(this.currentPage);
+    this.getAllProductsTypesPaginated();
+  }
+
+  onSubmit(form: Object) {
+    this.getProductsPaginatedByDescription(this.description);
+  }
 
   addToCart(product: Product) {
     this.productsService.addToCart(product);
@@ -49,8 +45,9 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-  getAllProductsPaginated() {
-    this.productsService.getAllPaginatedProducts().subscribe(
+  getAllProductsPaginated(pageSelected: number) {
+    this.currentPage = pageSelected;
+    this.productsService.getAllPaginatedProducts(this.currentPage).subscribe(
       (page) => {
         this.products = page.content;
         this.page = page;
@@ -87,51 +84,5 @@ export class ProductsComponent implements OnInit {
 
   cart() {
     this.router.navigate(['/cart'])
-  }
-  private loadPage(pageNumber: number = 0, pageSize: number = 10): void {
-    this.currentPage = {
-      content: this.products.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize),
-      pageable: '',
-      totalElements: this.products.length,
-      last: (pageNumber + 1) * pageSize >= this.products.length,
-      totalPages: Math.ceil(this.products.length / pageSize),
-      size: pageSize,
-      number: pageNumber,
-      numberOfElements: this.products.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize).length,
-      first: pageNumber === 0,
-      empty: !this.products.length
-    };
-  }
-
-  public nextPage(): void {
-    if (this.currentPage.last) {
-      return;
-    }
-    this.loadPage(this.currentPage.number + 1, this.currentPage.size);
-  }
-
-  public prevPage(): void {
-    if (this.currentPage.first) {
-      return;
-    }
-    this.loadPage(this.currentPage.number - 1, this.currentPage.size);
-  }
-
-  public changePageSize(pageSize: number): void {
-    this.loadPage(0, pageSize);
-  }
-
-  public setProducts(products: Product[]): void {
-    this.products = products;
-    this.loadPage();
-  }
-
-  ngOnInit(): void {
-    this.getAllProductsPaginated();
-    this.getAllProductsTypesPaginated();
-  }
-
-  onSubmit(form: Object) {
-    this.getProductsPaginatedByDescription(this.description);
   }
 }
