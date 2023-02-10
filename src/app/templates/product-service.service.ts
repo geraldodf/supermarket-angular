@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {Product} from '../../models/Product';
 import {Page} from 'src/models/Page';
 import {ProductType} from 'src/models/ProductType';
-import {CartComponent} from "./cart/cart.component";
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +16,7 @@ export class ProductServiceService {
   sortType = 'asc';
   paramSort = 'description';
   pageNumber = 0;
-  pageSize = 20;
+  pageSize = 9;
   description = '';
 
   endpoint = 'http://localhost:8080/api/products';

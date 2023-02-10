@@ -85,4 +85,15 @@ export class ProductsComponent implements OnInit {
   cart() {
     this.router.navigate(['/cart'])
   }
+
+  nextPage() {
+    // @ts-ignore
+    this.currentPage += 1;
+    this.getAllProductsPaginated(this.currentPage);
+  }
+
+  previousPage() {
+    this.currentPage -= 1;
+    this.getAllProductsPaginated(this.currentPage);
+  }
 }
