@@ -15,13 +15,11 @@ export class ProductServiceService {
   productsToCart: Product[] = [];
   sortType = 'asc';
   paramSort = 'description';
-  pageNumber = 0;
-  pageSize = 9;
+  currentPage: number | undefined = 0;
+  pageSize = 3;
   description = '';
 
   endpoint = 'http://localhost:8080/api/products';
-  endpointDescriptionPaged = `${this.endpoint}/products-description?page=${this.pageNumber}&size=${this.pageSize}&sort=description,asc&description=${this.description}`;
-  endpointPaginatedProductByProductTypeId = `${this.endpoint}/products-type-id?page=${this.pageNumber}&size=${this.pageSize}&sort=description,asc`
   endpointPaginatedProductTypes = 'http://localhost:8080/api/products-types/types?sort=nameProductType,asc';
 
 
@@ -34,22 +32,41 @@ export class ProductServiceService {
   }
 
 
-  getAllPaginatedProducts(pageNumber: number, pageSize?: number): Observable<Page> {
-    this.pageNumber = pageNumber;
-    return this.http.get<Page>(`${this.endpoint}/products?page=${this.pageNumber}&size=${this.pageSize}&sort=${this.paramSort},${this.sortType}`);
+  getAllPaginatedProducts(currentPage?: number, pageSize?: number): Observable<Page> {
+    if (pageSize != null) {
+      this.pageSize = pageSize;
+    }
+    if (currentPage != null) {
+      this.currentPage = currentPage;
+    }
+
+    return this.http.get<Page>(`${this.endpoint}/page?page=${this.currentPage}&size=${this.pageSize}&sort=${this.paramSort},${this.sortType}`);
   }
 
-  getProductsByDescriptionPaginated(description: string): Observable<any> {
+  getProductsByDescriptionPaginated(description: string, currentPage?: number, pageSize?: number): Observable<Page> {
+    if (pageSize != null) {
+      this.pageSize = pageSize;
+    }
+    if (currentPage != null) {
+      this.currentPage = currentPage;
+    }
+
     this.description = description;
-    return this.http.get<Page>(this.endpointDescriptionPaged + description);
+    return this.http.get<Page>(`${this.endpoint}/page?page=${this.currentPage}&size=${this.pageSize}&sort=${this.paramSort},${this.sortType}&description=${description}`);
   }
 
   getAllProductTypesPaginated(): Observable<ProductType[]> {
     return this.http.get<ProductType[]>(this.endpointPaginatedProductTypes);
   }
 
-  getProductsByProductType(type: ProductType): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.endpointPaginatedProductByProductTypeId}&typeId=${type.id}`);
+  getProductsByProductType(type: ProductType, currentPage?: number, pageSize?: number): Observable<Page> {
+    if (pageSize != null) {
+      this.pageSize = pageSize;
+    }
+    if (currentPage != null) {
+      this.currentPage = currentPage;
+    }
+    return this.http.get<Page>(`${this.endpoint}/page?page=${this.currentPage}&size=${this.pageSize}&sort=${this.paramSort},${this.sortType}&typeId=${type.id}`);
   }
 
 

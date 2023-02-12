@@ -11,6 +11,7 @@ import {Page} from "../../../models/Page";
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
+
   constructor(private productsService: ProductServiceService, private router: Router) {
   }
 
@@ -18,9 +19,10 @@ export class ProductsComponent implements OnInit {
   page: Page | undefined;
   types: ProductType[] = [];
   description: string = '';
-  nameTypeSelected: string = '';
   currentPage: number = 0;
-
+  nameTypeSelected: string = '';
+  typeSelected: ProductType | undefined;
+  inPagination: boolean = false;
 
   ngOnInit(): void {
     this.getAllProductsPaginated(this.currentPage);
@@ -38,6 +40,7 @@ export class ProductsComponent implements OnInit {
   getAllProductsTypesPaginated() {
     this.productsService.getAllProductTypesPaginated().subscribe(
       (types) => {
+        this.currentPage = 0;
         this.types = types;
       }, (error) => {
         console.log('Error when fetching all types of paginated products.', error);
@@ -49,8 +52,12 @@ export class ProductsComponent implements OnInit {
     this.currentPage = pageSelected;
     this.productsService.getAllPaginatedProducts(this.currentPage).subscribe(
       (page) => {
+        if (!this.inPagination) {
+          this.currentPage = 0;
+        }
         this.products = page.content;
         this.page = page;
+        this.inPagination = false;
       },
       (error) => {
         console.log('Error when fetching all products paginated.', error);
@@ -59,9 +66,13 @@ export class ProductsComponent implements OnInit {
   }
 
   getProductsPaginatedByDescription(description: string) {
-    this.productsService.getProductsByDescriptionPaginated(description).subscribe(
-      (products) => {
-        this.products = products.content;
+    this.productsService.getProductsByDescriptionPaginated(description, this.currentPage).subscribe(
+      (page) => {
+        if (!this.inPagination) {
+          this.currentPage = 0;
+        }
+        this.products = page.content;
+        this.inPagination = false;
       },
       (error) => {
         console.log('Error when fetching products by description paginated.', error);
@@ -70,11 +81,15 @@ export class ProductsComponent implements OnInit {
   }
 
   getProductsByProductType(type: ProductType) {
-    this.productsService.getProductsByProductType(type).subscribe(
-      (products) => {
-        this.products = products;
+    this.productsService.getProductsByProductType(type, this.currentPage).subscribe(
+      (page) => {
+        if (!this.inPagination) {
+          this.currentPage = 0;
+        }
+        this.products = page.content;
+        this.typeSelected = type;
         this.nameTypeSelected = type.nameProductType;
-        console.log(this.nameTypeSelected)
+        this.inPagination = false;
       },
       (error) => {
         console.log('Error when fetching products by description paginated.', error);
@@ -89,11 +104,27 @@ export class ProductsComponent implements OnInit {
   nextPage() {
     // @ts-ignore
     this.currentPage += 1;
-    this.getAllProductsPaginated(this.currentPage);
+    this.verifyPagination();
   }
 
   previousPage() {
     this.currentPage -= 1;
-    this.getAllProductsPaginated(this.currentPage);
+    this.verifyPagination();
+
+  }
+
+  verifyPagination() {
+    this.inPagination = true;
+    if (this.description.length > 0) {
+      this.getProductsPaginatedByDescription(this.description);
+    } else if (this.typeSelected?.id != 0) {
+      if (this.typeSelected != undefined) {
+        this.getProductsByProductType(this.typeSelected);
+      }
+    }
+    if (this.description.length < 1 && this.typeSelected?.id == undefined) {
+      this.getAllProductsPaginated(this.currentPage);
+    }
+
   }
 }
