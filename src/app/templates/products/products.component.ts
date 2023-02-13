@@ -24,6 +24,8 @@ export class ProductsComponent implements OnInit {
   typeSelected: ProductType | undefined;
   inPagination: boolean = false;
 
+
+
   ngOnInit(): void {
     this.getAllProductsPaginated(this.currentPage);
     this.getAllProductsTypesPaginated();
@@ -112,6 +114,12 @@ export class ProductsComponent implements OnInit {
     this.verifyPagination();
 
   }
+
+  specificPage(page: number) {
+    this.currentPage = page;
+    this.verifyPagination();
+  }
+
 
   verifyPagination() {
     this.inPagination = true;
