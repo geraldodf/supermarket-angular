@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
   }
 
   productList: Product[] = [];
+  list: Product[] = [];
   salePrice: number = 0;
 
   ngOnInit() {
@@ -42,6 +43,11 @@ export class CartComponent implements OnInit {
     this.saveProducts();
   }
 
+  cleanCart(){
+    localStorage.setItem('productList', JSON.stringify(this.list));
+    this.loadProducts();
+    this.updateSalePrice();
+  }
 
   removeProduct(product: Product) {
     const index = this.productList.indexOf(product);

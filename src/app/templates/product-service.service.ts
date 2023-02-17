@@ -16,7 +16,7 @@ export class ProductServiceService {
   sortType = 'asc';
   paramSort = 'description';
   currentPage: number | undefined = 0;
-  pageSize = 3;
+  pageSize = 9;
   description = '';
 
   endpoint = 'http://localhost:8080/api/products';
