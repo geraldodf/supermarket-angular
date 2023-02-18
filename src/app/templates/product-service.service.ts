@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Product} from '../../models/Product';
 import {Page} from 'src/models/Page';
 import {ProductType} from 'src/models/ProductType';
+import { SaleDto } from 'src/models/SaleDto';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class ProductServiceService {
   constructor(private http: HttpClient) {
   }
 
+  sale: SaleDto = new SaleDto();
   productsToCart: Product[] = [];
   sortType = 'asc';
   paramSort = 'description';
@@ -24,7 +26,7 @@ export class ProductServiceService {
 
 
   addToCart(product: Product) {
-    this.productsToCart.push(product);
+    this.sale.productList.push(product);
   }
 
   getProductsCart(): Product[] {

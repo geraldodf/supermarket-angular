@@ -11,7 +11,7 @@ export class CartComponent implements OnInit {
 
   constructor(private productService: ProductServiceService) {
   }
-
+  
   productList: Product[] = [];
   list: Product[] = [];
   salePrice: number = 0;
