@@ -13,8 +13,7 @@ export class ProductServiceService {
   constructor(private http: HttpClient) {
   }
 
-  sale: SaleDto;
-  productsToCart: Product[];
+  productsToCart: Product[] = [];
   sortType = 'asc';
   paramSort = 'description';
   currentPage: number = 0;
@@ -26,7 +25,7 @@ export class ProductServiceService {
 
 
   addToCart(product: Product) {
-    this.sale.productList.push(product);
+    this.productsToCart.push(product);
   }
 
   getProductsCart(): Product[] {

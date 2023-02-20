@@ -65,20 +65,14 @@
                   <span class="item_price">R${{ p.priceSale }}</span>
                 </div>
                 <p class="h6 text-muted">Quant.: {{p.quantity}}</p>
-                <div
-                  class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"
-                >
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input
-                        type="submit"
-                        name="submit"
-                        (click)="addToCart(p)"
-                        value="Adicionar a compra"
-                        class="button"
-                      />
-                    </fieldset>
-                  </form>
+                <div class="snipcart-details ">
+                  <input
+                    type="submit"
+                    name="submit"
+                    (click)="addToCart(p)"
+                    value="Adicionar a compra"
+                    class="button"
+                  />
                 </div>
               </div>
             </div>

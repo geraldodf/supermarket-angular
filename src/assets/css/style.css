@@ -5967,4 +5967,16 @@ select.form-control.option-w3ls {
 
 }
 
+.bg-orange {
+  background: #FF5722;
+  color: white;
+  --bs-btn-hover-bg: #1accfd;
+}
+
+.light-primary {
+  background-color: #1accfd;
+  color: white;
+  --bs-btn-hover-bg: #FF5722;
+}
+
 /*--//responsive--*/
