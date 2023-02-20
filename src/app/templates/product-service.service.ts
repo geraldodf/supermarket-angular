@@ -13,11 +13,11 @@ export class ProductServiceService {
   constructor(private http: HttpClient) {
   }
 
-  sale: SaleDto = new SaleDto();
-  productsToCart: Product[] = [];
+  sale: SaleDto;
+  productsToCart: Product[];
   sortType = 'asc';
   paramSort = 'description';
-  currentPage: number | undefined = 0;
+  currentPage: number = 0;
   pageSize = 9;
   description = '';
 

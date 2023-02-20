@@ -8,7 +8,7 @@ export class Product {
   quantity: number = 0;
   barCode: number = 0;
   creationDate: string = '';
-  priceTotalSale?: number = 0;
-  quantitySelected?: number = 1;
+  priceTotalSale: number = 0;
+  quantitySelected: number = 1;
 
 }

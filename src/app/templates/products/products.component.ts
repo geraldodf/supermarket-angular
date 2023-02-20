@@ -16,12 +16,12 @@ export class ProductsComponent implements OnInit {
   }
 
   products: Product[] = [];
-  page: Page | undefined;
+  page: Page;
   types: ProductType[] = [];
   description: string = '';
   currentPage: number = 0;
   nameTypeSelected: string = '';
-  typeSelected: ProductType | undefined;
+  typeSelected: ProductType;
   inPagination: boolean = false;
 
 
@@ -104,7 +104,6 @@ export class ProductsComponent implements OnInit {
   }
 
   nextPage() {
-    // @ts-ignore
     this.currentPage += 1;
     this.verifyPagination();
   }

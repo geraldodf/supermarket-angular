@@ -11,8 +11,8 @@ export class CartComponent implements OnInit {
 
   constructor(private productService: ProductServiceService) {
   }
-  
-  productList: Product[] = [];
+
+  productList: Product[];
   list: Product[] = [];
   salePrice: number = 0;
 
@@ -32,9 +32,8 @@ export class CartComponent implements OnInit {
   addProduct(product: Product): void {
     const existingProductIndex = this.productList.findIndex(p => p.id === product.id);
     if (existingProductIndex !== -1) {
-      // @ts-ignore
+
       this.productList[existingProductIndex].quantitySelected++;
-      // @ts-ignore
       this.productList[existingProductIndex].priceTotalSale = this.productList[existingProductIndex].priceSale * this.productList[existingProductIndex].quantitySelected;
 
     } else {
@@ -43,7 +42,7 @@ export class CartComponent implements OnInit {
     this.saveProducts();
   }
 
-  cleanCart(){
+  cleanCart() {
     localStorage.setItem('productList', JSON.stringify(this.list));
     this.loadProducts();
     this.updateSalePrice();
@@ -64,9 +63,7 @@ export class CartComponent implements OnInit {
   updateQuantity(quantity: number, product: Product): void {
 
     const index = this.productList.findIndex(p => p.id === product.id);
-    // @ts-ignore
     this.productList[index].quantitySelected = quantity;
-    // @ts-ignore
     this.productList[index].priceTotalSale = this.productList[index].priceSale * this.productList[index].quantitySelected;
 
     this.updateProductSalePrice();
