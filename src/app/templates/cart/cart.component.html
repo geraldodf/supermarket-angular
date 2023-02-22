@@ -56,7 +56,7 @@
         class="btn mt-4 snipcart-details light-primary"
         (click)="showPayments = !showPayments"
       >
-        Finalizar Compra
+        Escolher Pagamento
       </button>
     </div>
   </div>
@@ -65,12 +65,7 @@
     <div class="container">
       <main>
         <div class="py-5 text-center">
-          <h2>Checkout form</h2>
-          <p class="lead">
-            Below is an example form built entirely with Bootstrap’s form
-            controls. Each required form group has a validation state that can
-            be triggered by attempting to submit the form without completing it.
-          </p>
+          <h2>Endereço e Pagamento</h2>
         </div>
 
         <div class="row g-5">
@@ -128,11 +123,11 @@
             </form>
           </div>
           <div class="col-md-7 col-lg-8">
-            <h4 class="mb-3">Billing address</h4>
+            <h4 class="mb-3">Endereço de Entrega</h4>
             <form class="needs-validation" novalidate>
               <div class="row g-3">
                 <div class="col-sm-6">
-                  <label for="firstName" class="form-label">First name</label>
+                  <label for="firstName" class="form-label">Nome</label>
                   <input
                     type="text"
                     class="form-control"
@@ -141,13 +136,10 @@
                     value=""
                     required
                   />
-                  <div class="invalid-feedback">
-                    Valid first name is required.
-                  </div>
                 </div>
 
                 <div class="col-sm-6">
-                  <label for="lastName" class="form-label">Last name</label>
+                  <label for="lastName" class="form-label">Sobrenome</label>
                   <input
                     type="text"
                     class="form-control"
@@ -160,27 +152,39 @@
                     Valid last name is required.
                   </div>
                 </div>
-
-                <div class="col-12">
-                  <label for="username" class="form-label">Username</label>
-                  <div class="input-group has-validation">
-                    <span class="input-group-text">@</span>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      placeholder="Username"
-                      required
-                    />
-                    <div class="invalid-feedback">
-                      Your username is required.
-                    </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Telefone </label>
+                  <label for="address2" class="form-label"> </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cell"
+                    placeholder="Número com DDD"
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid last name is required.
                   </div>
                 </div>
+                <div class="col-sm-6">
+                  <label class="form-label"
+                    >Telefone
+                    <span class="text-muted"> 2 (Opcional)</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cell"
+                    placeholder="Número com DDD"
+                    value=""
+                    required
+                  />
+                </div>
 
-                <div class="col-12">
+                <div class="col-sm-12">
                   <label for="email" class="form-label"
-                    >Email <span class="text-muted">(Optional)</span></label
+                    >Email <span class="text-muted">(Opcional)</span></label
                   >
                   <input
                     type="email"
@@ -188,99 +192,47 @@
                     id="email"
                     placeholder="you@example.com"
                   />
-                  <div class="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
-                  </div>
                 </div>
 
-                <div class="col-12">
-                  <label for="address" class="form-label">Address</label>
+                <div class="col-sm-8">
+                  <label for="country" class="form-label">Endereço</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="address"
-                    placeholder="1234 Main St"
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Please enter your shipping address.
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <label for="address2" class="form-label"
-                    >Address 2 <span class="text-muted">(Optional)</span></label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="address2"
-                    placeholder="Apartment or suite"
+                    id="email"
+                    placeholder="Ex: Bairro Santos, Rua Lima,  Número 123"
                   />
                 </div>
 
-                <div class="col-md-5">
-                  <label for="country" class="form-label">Country</label>
-                  <select class="form-select" id="country" required>
-                    <option value="">Choose...</option>
-                    <option>United States</option>
+                <div class="col-sm-4">
+                  <label for="state" class="form-label">Cidade</label>
+                  <select class="form-select" id="cidade" required>
+                    <option value="">Escolha...</option>
+                    <option>Balneário Gaivota</option>
+                    <option>Sombrio</option>
                   </select>
-                  <div class="invalid-feedback">
-                    Please select a valid country.
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                  <label for="state" class="form-label">State</label>
-                  <select class="form-select" id="state" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please provide a valid state.
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <label for="zip" class="form-label">Zip</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="zip"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">Zip code required.</div>
                 </div>
               </div>
 
-              <hr class="my-4" />
-
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="same-address"
-                />
-                <label class="form-check-label" for="same-address"
-                  >Shipping address is the same as my billing address</label
+              <div class="col-md-12">
+                <label for="address" class="form-label"
+                  >Complemento <span class="text-muted">(Opcional)</span></label
                 >
-              </div>
-
-              <div class="form-check">
                 <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="save-info"
+                  type="text"
+                  class="form-control"
+                  id="complemento"
+                  placeholder="Bairro ABC, Rua X, N"
                 />
-                <label class="form-check-label" for="save-info"
-                  >Save this information for next time</label
-                >
               </div>
 
-              <hr class="my-4" />
 
-              <h4 class="mb-3">Payment</h4>
+
+
+
+              <hr class="my-5" />
+
+              <h3 class="mb-3">Payment</h3>
 
               <div class="my-3">
                 <div class="form-check">
@@ -403,6 +355,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="form-validation.js"></script>
+    <script src="form-validati  on.js"></script>
   </div>
 </div>

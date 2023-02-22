@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   productList: Product[] = [];
   list: Product[] = [];
   salePrice: number = 0;
-  showPayments = false;
+  showPayments = true;
 
 
   ngOnInit() {
