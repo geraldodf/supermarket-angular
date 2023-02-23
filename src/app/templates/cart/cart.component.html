@@ -34,7 +34,7 @@
         </td>
         <td class="text-center">{{ p.priceTotalSale | number : "1.2-2" }}</td>
         <td class="text-center">
-          <button class="btn btn-danger" (click)="removeProduct(p)">
+          <button class="btn bg-orange" (click)="removeProduct(p)">
             Excluir
           </button>
         </td>
@@ -65,66 +65,13 @@
     <div class="container">
       <main>
         <div class="py-5 text-center">
-          <h2>Endereço e Pagamento</h2>
+          <h2>Endereço</h2>
         </div>
 
         <div class="row g-5">
-          <div class="col-md-5 col-lg-4 order-md-last">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-primary">Your cart</span>
-              <span class="badge bg-primary rounded-pill">3</span>
-            </h4>
-            <ul class="list-group mb-3">
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 class="my-0">Product name</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$12</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 class="my-0">Second product</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$8</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 class="my-0">Third item</h6>
-                  <small class="text-muted">Brief description</small>
-                </div>
-                <span class="text-muted">$5</span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between bg-light"
-              >
-                <div class="text-success">
-                  <h6 class="my-0">Promo code</h6>
-                  <small>EXAMPLECODE</small>
-                </div>
-                <span class="text-success">−$5</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
-              </li>
-            </ul>
-
-            <form class="card p-2">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Promo code"
-                />
-                <button type="submit" class="btn btn-secondary">Redeem</button>
-              </div>
-            </form>
-          </div>
-          <div class="col-md-7 col-lg-8">
+          <div class="">
             <h4 class="mb-3">Endereço de Entrega</h4>
-            <form class="needs-validation" novalidate>
+            <div class="needs-validation" novalidate>
               <div class="row g-3">
                 <div class="col-sm-6">
                   <label for="firstName" class="form-label">Nome</label>
@@ -190,7 +137,7 @@
                     type="email"
                     class="form-control"
                     id="email"
-                    placeholder="you@example.com"
+                    placeholder="daroz@exemplo.com"
                   />
                 </div>
 
@@ -212,135 +159,214 @@
                     <option>Sombrio</option>
                   </select>
                 </div>
+
+                <div class="col-sm-12">
+                  <label for="address" class="form-label"
+                    >Complemento
+                    <span class="text-muted">(Opcional)</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="complemento"
+                    placeholder="Bairro ABC, Rua X, N"
+                  />
+                </div>
               </div>
 
-              <div class="col-md-12">
-                <label for="address" class="form-label"
-                  >Complemento <span class="text-muted">(Opcional)</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="complemento"
-                  placeholder="Bairro ABC, Rua X, N"
-                />
+              <button class="w-100 btn light-primary btn-lg mt-4" type="submit">
+                Salvar Endereço
+              </button>
+
+              <div class="py-5 text-center">
+                <h2>Pagamentos</h2>
               </div>
-
-
-
-
-
-              <hr class="my-5" />
-
-              <h3 class="mb-3">Payment</h3>
 
               <div class="my-3">
                 <div class="form-check">
                   <input
-                    id="credit"
+                    id="credito"
                     name="paymentMethod"
                     type="radio"
                     class="form-check-input"
+                    [(ngModel)]="selectedPaymentMethod"
+                    value="credito"
                     checked
                     required
                   />
-                  <label class="form-check-label" for="credit"
-                    >Credit card</label
-                  >
+                  <label class="form-check-label">Cartão de Crédito</label>
                 </div>
                 <div class="form-check">
                   <input
-                    id="debit"
+                    id="debito"
                     name="paymentMethod"
                     type="radio"
                     class="form-check-input"
+                    [(ngModel)]="selectedPaymentMethod"
+                    value="debito"
                     required
                   />
-                  <label class="form-check-label" for="debit">Debit card</label>
+                  <label class="form-check-label">Cartão de Débito</label>
                 </div>
                 <div class="form-check">
                   <input
-                    id="paypal"
+                    id="pix"
                     name="paymentMethod"
                     type="radio"
                     class="form-check-input"
+                    [(ngModel)]="selectedPaymentMethod"
+                    value="pix"
                     required
                   />
-                  <label class="form-check-label" for="paypal">PayPal</label>
+                  <label class="form-check-label">Pix</label>
                 </div>
               </div>
 
-              <div class="row gy-3">
-                <div class="col-md-6">
-                  <label for="cc-name" class="form-label">Name on card</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="cc-name"
-                    placeholder=""
-                    required
-                  />
-                  <small class="text-muted"
-                    >Full name as displayed on card</small
-                  >
-                  <div class="invalid-feedback">Name on card is required</div>
-                </div>
+              <div *ngIf="selectedPaymentMethod === 'credito'">
+                <div class="row gy-3">
+                  <div class="col-md-6">
+                    <label for="cc-name" class="form-label"
+                      >Nome no Cartão</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-name"
+                      placeholder=""
+                      required
+                      [(ngModel)]="cardName"
+                    />
+                    <small class="text-muted"
+                      >Nome completo que está no cartão</small
+                    >
+                  </div>
 
-                <div class="col-md-6">
-                  <label for="cc-number" class="form-label"
-                    >Credit card number</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="cc-number"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Credit card number is required
+                  <div class="col-md-6">
+                    <label for="cc-number" class="form-label"
+                      >Número do Cartão</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-number"
+                      placeholder=""
+                      required
+                      [(ngModel)]="cardNumber"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="cc-expiration" class="form-label"
+                      >Data de Validade</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-expiration"
+                      placeholder=""
+                      required
+                      [(ngModel)]="expirationDate"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-cvv"
+                      placeholder=""
+                      required
+                      [(ngModel)]="cvv"
+                    />
                   </div>
                 </div>
+              </div>
+              <div *ngIf="selectedPaymentMethod === 'debito'">
+                <div class="row gy-3">
+                  <div class="col-md-6">
+                    <label for="cc-name" class="form-label"
+                      >Nome no Cartão</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-name"
+                      placeholder=""
+                      required
+                      [(ngModel)]="cardName"
+                    />
+                    <small class="text-muted"
+                      >Nome completo que está no cartão</small
+                    >
+                  </div>
 
-                <div class="col-md-3">
-                  <label for="cc-expiration" class="form-label"
-                    >Expiration</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="cc-expiration"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">Expiration date required</div>
-                </div>
+                  <div class="col-md-6">
+                    <label for="cc-number" class="form-label"
+                      >Número do Cartão</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-number"
+                      placeholder=""
+                      required
+                      [(ngModel)]="cardNumber"
+                    />
+                  </div>
 
-                <div class="col-md-3">
-                  <label for="cc-cvv" class="form-label">CVV</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="cc-cvv"
-                    placeholder=""
-                    required
-                  />
-                  <div class="invalid-feedback">Security code required</div>
+                  <div class="col-md-3">
+                    <label for="cc-expiration" class="form-label"
+                      >Data de Validade</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-expiration"
+                      placeholder=""
+                      required
+                      [(ngModel)]="expirationDate"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cc-cvv"
+                      placeholder=""
+                      required
+                      [(ngModel)]="cvv"
+                    />
+                  </div>
                 </div>
+              </div>
+              <div *ngIf="selectedPaymentMethod === 'pix'">
+                <h4>Chave: <strong>geraldodarosfilho@hotmail.com</strong></h4>
+                <h4 class="mt-4">Ou também pelo QR code</h4>
+                <img
+                  class="mt-4"
+                  src="../../../assets/images/qrcode.png"
+                  alt=""
+                />
               </div>
 
               <hr class="my-4" />
-
-              <button class="w-100 btn btn-primary btn-lg" type="submit">
-                Continue to checkout
+              <button
+                class="w-100 btn light-primary btn-lg"
+                type="submit"
+                (click)="confirmAction()"
+              >
+                Finalizar
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </main>
 
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017–2021 Company Name</p>
+        <p class="mb-1">&copy; Daroz Supermercado</p>
         <ul class="list-inline">
           <li class="list-inline-item"><a href="#">Privacy</a></li>
           <li class="list-inline-item"><a href="#">Terms</a></li>

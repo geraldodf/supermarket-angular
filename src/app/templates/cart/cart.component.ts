@@ -14,7 +14,20 @@ export class CartComponent implements OnInit {
   list: Product[] = [];
   salePrice: number = 0;
   showPayments = true;
+  selectedPaymentMethod = 'credito';
 
+  cardName: string;
+  cardNumber: string;
+  expirationDate: string;
+  cvv: string;
+
+
+  capturarValores() {
+    console.log('Nome no Cartão:', this.cardName);
+    console.log('Número do Cartão:', this.cardNumber);
+    console.log('Data de Validade:', this.expirationDate);
+    console.log('CVV:', this.cvv);
+  }
 
   ngOnInit() {
     this.loadProducts();
@@ -101,5 +114,13 @@ export class CartComponent implements OnInit {
 
   paymentMethod() {
     console.log('Finalizei a venda!');
+  }
+
+  confirmAction() {
+    if (confirm('Tem certeza que deseja continuar?')) {
+      console.log('Sim');
+    } else {
+      console.log('Sim');
+    }
   }
 }
