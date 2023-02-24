@@ -21,13 +21,15 @@ export class CartComponent implements OnInit {
   expirationDate: string;
   cvv: string;
 
+  name: string;
+  surname: string;
+  phoneNumber: string;
+  phoneNumberReserve: string;
+  email: string;
+  adress: string;
+  city: string = "Escolha...";
+  complement: string;
 
-  capturarValores() {
-    console.log('Nome no Cartão:', this.cardName);
-    console.log('Número do Cartão:', this.cardNumber);
-    console.log('Data de Validade:', this.expirationDate);
-    console.log('CVV:', this.cvv);
-  }
 
   ngOnInit() {
     this.loadProducts();

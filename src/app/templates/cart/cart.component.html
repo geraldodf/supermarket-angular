@@ -76,6 +76,7 @@
                 <div class="col-sm-6">
                   <label for="firstName" class="form-label">Nome</label>
                   <input
+                    [(ngModel)]="name"
                     type="text"
                     class="form-control"
                     id="firstName"
@@ -86,11 +87,12 @@
                 </div>
 
                 <div class="col-sm-6">
-                  <label for="lastName" class="form-label">Sobrenome</label>
+                  <label for="surname" class="form-label">Sobrenome</label>
                   <input
+                    [(ngModel)]="surname"
                     type="text"
                     class="form-control"
-                    id="lastName"
+                    id="surname"
                     placeholder=""
                     value=""
                     required
@@ -103,6 +105,7 @@
                   <label class="form-label">Telefone </label>
                   <label for="address2" class="form-label"> </label>
                   <input
+                    [(ngModel)]="phoneNumber"
                     type="text"
                     class="form-control"
                     id="cell"
@@ -120,6 +123,7 @@
                     <span class="text-muted"> 2 (Opcional)</span></label
                   >
                   <input
+                    [(ngModel)]="phoneNumberReserve"
                     type="text"
                     class="form-control"
                     id="cell"
@@ -134,6 +138,7 @@
                     >Email <span class="text-muted">(Opcional)</span></label
                   >
                   <input
+                    [(ngModel)]="email"
                     type="email"
                     class="form-control"
                     id="email"
@@ -144,6 +149,7 @@
                 <div class="col-sm-8">
                   <label for="country" class="form-label">Endereço</label>
                   <input
+                    [(ngModel)]="adress"
                     type="text"
                     class="form-control"
                     id="email"
@@ -152,9 +158,9 @@
                 </div>
 
                 <div class="col-sm-4">
-                  <label for="state" class="form-label">Cidade</label>
-                  <select class="form-select" id="cidade" required>
-                    <option value="">Escolha...</option>
+                  <label for="city" class="form-label">Cidade</label>
+                  <select class="form-select" id="city" [(ngModel)]="city">
+                    <option selected>Escolha...</option>
                     <option>Balneário Gaivota</option>
                     <option>Sombrio</option>
                   </select>
@@ -166,6 +172,7 @@
                     <span class="text-muted">(Opcional)</span></label
                   >
                   <input
+                    [(ngModel)]="complement"
                     type="text"
                     class="form-control"
                     id="complemento"
