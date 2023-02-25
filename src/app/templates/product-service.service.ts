@@ -70,5 +70,9 @@ export class ProductServiceService {
     return this.http.get<Page>(`${this.endpoint}/page?page=${this.currentPage}&size=${this.pageSize}&sort=${this.paramSort},${this.sortType}&typeId=${type.id}`);
   }
 
+  createSale(sale: SaleDto){
+    return this.http.post<SaleDto>('http://localhost:8080/api/products/sales', sale);
+  }
+
 
 }
