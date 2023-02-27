@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../product-service.service';
 import { Product } from '../../../models/Product';
+import { SaleDto } from 'src/models/SaleDto';
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +16,7 @@ export class CartComponent implements OnInit {
   salePrice: number = 0;
   showPayments = true;
   selectedPaymentMethod = 'credito';
+  saleDto: SaleDto;
 
   cardName: string;
   cardNumber: string;
@@ -27,9 +29,8 @@ export class CartComponent implements OnInit {
   phoneNumberReserve: string;
   email: string;
   adress: string;
-  city: string = "Escolha...";
+  city: string = 'Escolha...';
   complement: string;
-
 
   ngOnInit() {
     this.loadProducts();
@@ -118,11 +119,18 @@ export class CartComponent implements OnInit {
     console.log('Finalizei a venda!');
   }
 
-  confirmAction() {
+  finishSale() {
     if (confirm('Tem certeza que deseja continuar?')) {
-      console.log('Sim');
+      this.createSale();
     } else {
-      console.log('Sim');
     }
+  }
+
+  createSale() {
+    this.saleDto = new SaleDto();
+    this.saleDto.saleValue = this.salePrice;
+    this.saleDto.productList = this.productList;
+    console.log("Criando sale...")
+    return this.productService.createSale(this.saleDto);
   }
 }
