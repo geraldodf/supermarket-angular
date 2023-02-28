@@ -130,7 +130,6 @@ export class CartComponent implements OnInit {
     this.saleDto = new SaleDto();
     this.saleDto.saleValue = this.salePrice;
     this.saleDto.productList = this.productList;
-    console.log("Criando sale...")
     return this.productService.createSale(this.saleDto);
   }
 }

@@ -88,9 +88,8 @@ export class ProductServiceService {
   createSale(sale: SaleDto) {
     console.log('antes');
     this.http.post<SaleDto>('http://localhost:8080/api/sales', sale).subscribe(
-      (response) => console.log("Sale was create."), // manipular a resposta da solicitação
-      (error) => console.log("Error on creating sale.") // manipular o erro da solicitação
+      (response) => console.log("Sale was create."),
+      (error) => console.log("Error on creating sale.")
     );
-    console.log('depois');
   }
 }
