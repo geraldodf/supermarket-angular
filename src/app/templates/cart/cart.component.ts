@@ -115,10 +115,6 @@ export class CartComponent implements OnInit {
     });
   }
 
-  paymentMethod() {
-    console.log('Finalizei a venda!');
-  }
-
   finishSale() {
     if (confirm('Tem certeza que deseja continuar?')) {
       this.createSale();
