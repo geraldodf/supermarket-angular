@@ -14,23 +14,13 @@
     <tbody>
       <tr class="align-items-center" *ngFor="let p of productList">
         <td class="text-center">
-          <img
-            src="../../../assets/images/mk4.jpg"
-            alt="Imagem Produto"
-            style="height: 50px"
-          />
+          <img src="../../../assets/images/mk4.jpg" alt="Imagem Produto" style="height: 50px" />
         </td>
         <td class="text-center">{{ p.description }}</td>
         <td class="text-center">{{ p.priceSale }}</td>
         <td class="text-center m-1">
-          <input
-            type="number"
-            min="1"
-            max="{{ p.quantity }}"
-            value="{{ p.quantitySelected }}"
-            style="width: 50px"
-            (input)="updateQuantity($any($event.target).value, p)"
-          />
+          <input type="number" min="1" max="{{ p.quantity }}" value="{{ p.quantitySelected }}" style="width: 50px"
+            (input)="updateQuantity($any($event.target).value, p)" />
         </td>
         <td class="text-center">{{ p.priceTotalSale | number : "1.2-2" }}</td>
         <td class="text-center">
@@ -52,340 +42,199 @@
       <button class="btn mt-4 me-2 bg-orange" (click)="cleanCart()">
         Limpar Carrinho
       </button>
-      <button
-        class="btn mt-4 snipcart-details light-primary"
-        (click)="showPayments = !showPayments"
-      >
-        Escolher Pagamento
+      <button class="btn mt-4 snipcart-details light-primary" (click)="showAddresses = !showAddresses">
+        Escolher Endereço
       </button>
     </div>
   </div>
+</div>
+<div *ngIf="showAddresses">
+  <div class="container container product-sec1">
+    <main>
+      <div class="py-5 text-center">
+        <h2>Endereço</h2>
+      </div>
 
-  <div *ngIf="showPayments">
-    <div class="container">
-      <main>
-        <div class="py-5 text-center">
-          <h2>Endereço</h2>
-        </div>
-
-        <div class="row g-5">
-          <div class="">
-            <h4 class="mb-3">Endereço de Entrega</h4>
-            <div class="needs-validation" novalidate>
-              <div class="row g-3">
-                <div class="col-sm-6">
-                  <label for="firstName" class="form-label">Nome</label>
-                  <input
-                    [(ngModel)]="name"
-                    type="text"
-                    class="form-control"
-                    id="firstName"
-                    placeholder=""
-                    value=""
-                    required
-                  />
-                </div>
-
-                <div class="col-sm-6">
-                  <label for="surname" class="form-label">Sobrenome</label>
-                  <input
-                    [(ngModel)]="surname"
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder=""
-                    value=""
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <label class="form-label">Telefone </label>
-                  <label for="address2" class="form-label"> </label>
-                  <input
-                    [(ngModel)]="phoneNumber"
-                    type="text"
-                    class="form-control"
-                    id="cell"
-                    placeholder="Número com DDD"
-                    value=""
-                    required
-                  />
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <label class="form-label"
-                    >Telefone
-                    <span class="text-muted"> 2 (Opcional)</span></label
-                  >
-                  <input
-                    [(ngModel)]="phoneNumberReserve"
-                    type="text"
-                    class="form-control"
-                    id="cell"
-                    placeholder="Número com DDD"
-                    value=""
-                    required
-                  />
-                </div>
-
-                <div class="col-sm-12">
-                  <label for="email" class="form-label"
-                    >Email <span class="text-muted">(Opcional)</span></label
-                  >
-                  <input
-                    [(ngModel)]="email"
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="daroz@exemplo.com"
-                  />
-                </div>
-
-                <div class="col-sm-8">
-                  <label for="country" class="form-label">Endereço</label>
-                  <input
-                    [(ngModel)]="adress"
-                    type="text"
-                    class="form-control"
-                    id="email"
-                    placeholder="Ex: Bairro Santos, Rua Lima,  Número 123"
-                  />
-                </div>
-
-                <div class="col-sm-4">
-                  <label for="city" class="form-label">Cidade</label>
-                  <select class="form-select" id="city" [(ngModel)]="city">
-                    <option selected>Escolha...</option>
-                    <option>Balneário Gaivota</option>
-                    <option>Sombrio</option>
-                  </select>
-                </div>
-
-                <div class="col-sm-12">
-                  <label for="address" class="form-label"
-                    >Complemento
-                    <span class="text-muted">(Opcional)</span></label
-                  >
-                  <input
-                    [(ngModel)]="complement"
-                    type="text"
-                    class="form-control"
-                    id="complemento"
-                    placeholder="Em frente a farmácia Santos"
-                  />
-                </div>
+      <div class="row g-5">
+        <div class="">
+          <h4 class="mb-3">Endereço de Entrega</h4>
+          <div class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">Nome</label>
+                <input [(ngModel)]="name" type="text" class="form-control" id="firstName" placeholder="" value=""
+                  required />
               </div>
 
-              <div class="py-5 text-center">
-                <h2>Pagamentos</h2>
-              </div>
-
-              <div class="my-3">
-                <div class="form-check">
-                  <input
-                    id="credito"
-                    name="paymentMethod"
-                    type="radio"
-                    class="form-check-input"
-                    [(ngModel)]="selectedPaymentMethod"
-                    value="credito"
-                    checked
-                    required
-                  />
-                  <label class="form-check-label">Cartão de Crédito</label>
-                </div>
-                <div class="form-check">
-                  <input
-                    id="debito"
-                    name="paymentMethod"
-                    type="radio"
-                    class="form-check-input"
-                    [(ngModel)]="selectedPaymentMethod"
-                    value="debito"
-                    required
-                  />
-                  <label class="form-check-label">Cartão de Débito</label>
-                </div>
-                <div class="form-check">
-                  <input
-                    id="pix"
-                    name="paymentMethod"
-                    type="radio"
-                    class="form-check-input"
-                    [(ngModel)]="selectedPaymentMethod"
-                    value="pix"
-                    required
-                  />
-                  <label class="form-check-label">Pix</label>
+              <div class="col-sm-6">
+                <label for="surname" class="form-label">Sobrenome</label>
+                <input [(ngModel)]="surname" type="text" class="form-control" id="surname" placeholder="" value=""
+                  required />
+                <div class="invalid-feedback">
+                  Valid last name is required.
                 </div>
               </div>
-
-              <div *ngIf="selectedPaymentMethod === 'credito'">
-                <div class="row gy-3">
-                  <div class="col-md-6">
-                    <label for="cc-name" class="form-label"
-                      >Nome no Cartão</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-name"
-                      placeholder=""
-                      required
-                      [(ngModel)]="cardName"
-                    />
-                    <small class="text-muted"
-                      >Nome completo que está no cartão</small
-                    >
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="cc-number" class="form-label"
-                      >Número do Cartão</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-number"
-                      placeholder=""
-                      required
-                      [(ngModel)]="cardNumber"
-                    />
-                  </div>
-
-                  <div class="col-md-3">
-                    <label for="cc-expiration" class="form-label"
-                      >Data de Validade</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-expiration"
-                      placeholder=""
-                      required
-                      [(ngModel)]="expirationDate"
-                    />
-                  </div>
-
-                  <div class="col-md-3">
-                    <label for="cc-cvv" class="form-label">CVV</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-cvv"
-                      placeholder=""
-                      required
-                      [(ngModel)]="cvv"
-                    />
-                  </div>
+              <div class="col-sm-6">
+                <label class="form-label">Telefone </label>
+                <label for="address2" class="form-label"> </label>
+                <input [(ngModel)]="phoneNumber" type="text" class="form-control" id="cell" placeholder="Número com DDD"
+                  value="" required />
+                <div class="invalid-feedback">
+                  Valid last name is required.
                 </div>
               </div>
-              <div *ngIf="selectedPaymentMethod === 'debito'">
-                <div class="row gy-3">
-                  <div class="col-md-6">
-                    <label for="cc-name" class="form-label"
-                      >Nome no Cartão</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-name"
-                      placeholder=""
-                      required
-                      [(ngModel)]="cardName"
-                    />
-                    <small class="text-muted"
-                      >Nome completo que está no cartão</small
-                    >
-                  </div>
-
-                  <div class="col-md-6">
-                    <label for="cc-number" class="form-label"
-                      >Número do Cartão</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-number"
-                      placeholder=""
-                      required
-                      [(ngModel)]="cardNumber"
-                    />
-                  </div>
-
-                  <div class="col-md-3">
-                    <label for="cc-expiration" class="form-label"
-                      >Data de Validade</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-expiration"
-                      placeholder=""
-                      required
-                      [(ngModel)]="expirationDate"
-                    />
-                  </div>
-
-                  <div class="col-md-3">
-                    <label for="cc-cvv" class="form-label">CVV</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="cc-cvv"
-                      placeholder=""
-                      required
-                      [(ngModel)]="cvv"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div *ngIf="selectedPaymentMethod === 'pix'">
-                <h4>Chave: <strong>geraldodarosfilho@hotmail.com</strong></h4>
-                <h4 class="mt-4">Ou também pelo QR code</h4>
-                <img
-                  class="mt-4"
-                  src="../../../assets/images/qrcode.png"
-                  alt=""
-                />
+              <div class="col-sm-6">
+                <label class="form-label">Telefone
+                  <span class="text-muted"> 2 (Opcional)</span></label>
+                <input [(ngModel)]="phoneNumberReserve" type="text" class="form-control" id="cell"
+                  placeholder="Número com DDD" value="" required />
               </div>
 
-              <hr class="my-4" />
-              <button class="w-50 btn light-primary btn-lg" type="submit">
-                Salvar Pagamento
+              <div class="col-sm-12">
+                <label for="email" class="form-label">Email <span class="text-muted">(Opcional)</span></label>
+                <input [(ngModel)]="email" type="email" class="form-control" id="email"
+                  placeholder="daroz@exemplo.com" />
+              </div>
+
+              <div class="col-sm-8">
+                <label for="country" class="form-label">Endereço</label>
+                <input [(ngModel)]="adress" type="text" class="form-control" id="email"
+                  placeholder="Ex: Bairro Santos, Rua Lima,  Número 123" />
+              </div>
+
+              <div class="col-sm-4">
+                <label for="city" class="form-label">Cidade</label>
+                <select class="form-select" id="city" [(ngModel)]="city">
+                  <option selected>Escolha...</option>
+                  <option>Balneário Gaivota</option>
+                  <option>Sombrio</option>
+                </select>
+              </div>
+
+              <div class="col-sm-12">
+                <label for="address" class="form-label">Complemento
+                  <span class="text-muted">(Opcional)</span></label>
+                <input [(ngModel)]="complement" type="text" class="form-control" id="complemento"
+                  placeholder="Em frente a farmácia Santos" />
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="text-start">
+              <button class="btn mt-4 me-2 bg-orange" routerLink="/">Voltar</button>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button class="btn mt-4 me-2 bg-orange" (click)="cleanCart()">
+                Salvar Endereço
               </button>
-              <button
-                class="w-50 btn bg-orange btn-lg"
-                type="submit"
-                (click)="finishSale()"
-              >
-                Finalizar
+              <button class="btn mt-4 snipcart-details light-primary" (click)="showAddresses = !showAddresses">
+                Ir para Pagamento
               </button>
             </div>
           </div>
         </div>
-      </main>
+      </div>
+    </main>
 
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Daroz Supermercado</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
-    </div>
-
-    <script
-      src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="form-validati  on.js"></script>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; Daroz Supermercado</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
   </div>
+
+  <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="form-validati  on.js"></script>
+</div>
+<div *ngIf="showPayments" class="container product-sec1">
+  <div class="py-5 text-center">
+    <h2>Pagamento</h2>
+  </div>
+
+  <div class="my-3">
+    <div class="form-check">
+      <input id="credito" name="paymentMethod" type="radio" class="form-check-input" [(ngModel)]="selectedPaymentMethod"
+        value="credito" checked required />
+      <label class="form-check-label">Cartão de Crédito</label>
+    </div>
+    <div class="form-check">
+      <input id="debito" name="paymentMethod" type="radio" class="form-check-input" [(ngModel)]="selectedPaymentMethod"
+        value="debito" required />
+      <label class="form-check-label">Cartão de Débito</label>
+    </div>
+    <div class="form-check">
+      <input id="pix" name="paymentMethod" type="radio" class="form-check-input" [(ngModel)]="selectedPaymentMethod"
+        value="pix" required />
+      <label class="form-check-label">Pix</label>
+    </div>
+  </div>
+
+  <div *ngIf="selectedPaymentMethod === 'credito'">
+    <div class="row gy-3">
+      <div class="col-md-6">
+        <label for="cc-name" class="form-label">Nome no Cartão</label>
+        <input type="text" class="form-control" id="cc-name" placeholder="" required [(ngModel)]="cardName" />
+        <small class="text-muted">Nome completo que está no cartão</small>
+      </div>
+
+      <div class="col-md-6">
+        <label for="cc-number" class="form-label">Número do Cartão</label>
+        <input type="text" class="form-control" id="cc-number" placeholder="" required [(ngModel)]="cardNumber" />
+      </div>
+
+      <div class="col-md-3">
+        <label for="cc-expiration" class="form-label">Data de Validade</label>
+        <input type="text" class="form-control" id="cc-expiration" placeholder="" required
+          [(ngModel)]="expirationDate" />
+      </div>
+
+      <div class="col-md-3">
+        <label for="cc-cvv" class="form-label">CVV</label>
+        <input type="text" class="form-control" id="cc-cvv" placeholder="" required [(ngModel)]="cvv" />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedPaymentMethod === 'debito'">
+    <div class="row gy-3">
+      <div class="col-md-6">
+        <label for="cc-name" class="form-label">Nome no Cartão</label>
+        <input type="text" class="form-control" id="cc-name" placeholder="" required [(ngModel)]="cardName" />
+        <small class="text-muted">Nome completo que está no cartão</small>
+      </div>
+
+      <div class="col-md-6">
+        <label for="cc-number" class="form-label">Número do Cartão</label>
+        <input type="text" class="form-control" id="cc-number" placeholder="" required [(ngModel)]="cardNumber" />
+      </div>
+
+      <div class="col-md-3">
+        <label for="cc-expiration" class="form-label">Data de Validade</label>
+        <input type="text" class="form-control" id="cc-expiration" placeholder="" required
+          [(ngModel)]="expirationDate" />
+      </div>
+
+      <div class="col-md-3">
+        <label for="cc-cvv" class="form-label">CVV</label>
+        <input type="text" class="form-control" id="cc-cvv" placeholder="" required [(ngModel)]="cvv" />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedPaymentMethod === 'pix'">
+    <h4>Chave: <strong>geraldodarosfilho@hotmail.com</strong></h4>
+    <h4 class="mt-4">Ou também pelo QR code</h4>
+    <img class="mt-4" src="../../../assets/images/qrcode.png" alt="" />
+  </div>
+
+  <hr class="my-4" />
+  <button class="w-50 btn light-primary btn-lg" type="submit">
+    Salvar Pagamento
+  </button>
+  <button class="w-50 btn bg-orange btn-lg" type="submit" (click)="finishSale()">
+    Finalizar
+  </button>
 </div>

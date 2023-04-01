@@ -14,7 +14,8 @@ export class CartComponent implements OnInit {
   productList: Product[] = [];
   list: Product[] = [];
   salePrice: number = 0;
-  showPayments = true;
+  showPayments = false;
+  showAddresses = false;
   selectedPaymentMethod = 'credito';
   saleDto: SaleDto;
 
